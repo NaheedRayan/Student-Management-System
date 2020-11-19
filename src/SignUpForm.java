@@ -180,7 +180,7 @@ public class SignUpForm extends javax.swing.JFrame {
         admin_panel.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-        jLabel8.setText("SignUp (admin)");
+        jLabel8.setText("SignUp ( admin )");
 
         jLabel7.setBackground(new java.awt.Color(255, 255, 255));
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
