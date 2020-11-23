@@ -1,5 +1,18 @@
 
 import java.awt.CardLayout;
+import java.awt.Image;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -25,6 +38,10 @@ public class SignUpForm extends javax.swing.JFrame {
         
         cardlayout = (CardLayout) dual_panel.getLayout();
     }
+    
+   String imagePth = null ;
+   Connection con ;
+   PreparedStatement pst ;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -71,30 +88,33 @@ public class SignUpForm extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        username_txt5 = new javax.swing.JTextField();
+        username_student = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
-        username_txt6 = new javax.swing.JTextField();
+        email_student = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
-        username_txt7 = new javax.swing.JTextField();
+        address_student = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
-        username_txt8 = new javax.swing.JTextField();
+        phone_number_student = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
-        username_txt9 = new javax.swing.JTextField();
+        id_student = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
-        password_txt2 = new javax.swing.JPasswordField();
+        password_student = new javax.swing.JPasswordField();
         jCheckBox3 = new javax.swing.JCheckBox();
         jLabel20 = new javax.swing.JLabel();
-        password_txt3 = new javax.swing.JPasswordField();
+        re_password_student = new javax.swing.JPasswordField();
         jCheckBox4 = new javax.swing.JCheckBox();
-        jButton2 = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        signup_button = new javax.swing.JButton();
+        department_student = new javax.swing.JComboBox<>();
         jLabel21 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        batch_student = new javax.swing.JComboBox<>();
         jLabel22 = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox<>();
+        session_student = new javax.swing.JComboBox<>();
         jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
-        jComboBox4 = new javax.swing.JComboBox<>();
+        blood_group_student = new javax.swing.JComboBox<>();
+        jLabel27 = new javax.swing.JLabel();
+        jLabelPic = new javax.swing.JLabel();
+        jButtonBrowse = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1100, 800));
@@ -120,6 +140,7 @@ public class SignUpForm extends javax.swing.JFrame {
         admin_button.setText("Admin");
         admin_button.setBorder(null);
         admin_button.setBorderPainted(false);
+        admin_button.setOpaque(false);
         admin_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 admin_buttonActionPerformed(evt);
@@ -143,20 +164,19 @@ public class SignUpForm extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addGap(116, 116, 116)
-                            .addComponent(jLabel2))
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addGap(82, 82, 82)
-                            .addComponent(jLabel1)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                        .addGap(101, 101, 101)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(116, 116, 116)
+                        .addComponent(jLabel2))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(82, 82, 82)
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(44, 44, 44)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(student_button, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(admin_button, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(95, Short.MAX_VALUE))
+                            .addComponent(admin_button, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(student_button, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -443,10 +463,10 @@ public class SignUpForm extends javax.swing.JFrame {
         jLabel14.setForeground(new java.awt.Color(153, 153, 153));
         jLabel14.setText("Username");
 
-        username_txt5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        username_txt5.addActionListener(new java.awt.event.ActionListener() {
+        username_student.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        username_student.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                username_txt5ActionPerformed(evt);
+                username_studentActionPerformed(evt);
             }
         });
 
@@ -455,10 +475,10 @@ public class SignUpForm extends javax.swing.JFrame {
         jLabel15.setForeground(new java.awt.Color(153, 153, 153));
         jLabel15.setText("email");
 
-        username_txt6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        username_txt6.addActionListener(new java.awt.event.ActionListener() {
+        email_student.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        email_student.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                username_txt6ActionPerformed(evt);
+                email_studentActionPerformed(evt);
             }
         });
 
@@ -467,10 +487,10 @@ public class SignUpForm extends javax.swing.JFrame {
         jLabel16.setForeground(new java.awt.Color(153, 153, 153));
         jLabel16.setText("Address");
 
-        username_txt7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        username_txt7.addActionListener(new java.awt.event.ActionListener() {
+        address_student.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        address_student.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                username_txt7ActionPerformed(evt);
+                address_studentActionPerformed(evt);
             }
         });
 
@@ -479,10 +499,10 @@ public class SignUpForm extends javax.swing.JFrame {
         jLabel17.setForeground(new java.awt.Color(153, 153, 153));
         jLabel17.setText("Phone Number");
 
-        username_txt8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        username_txt8.addActionListener(new java.awt.event.ActionListener() {
+        phone_number_student.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        phone_number_student.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                username_txt8ActionPerformed(evt);
+                phone_number_studentActionPerformed(evt);
             }
         });
 
@@ -491,10 +511,10 @@ public class SignUpForm extends javax.swing.JFrame {
         jLabel18.setForeground(new java.awt.Color(153, 153, 153));
         jLabel18.setText("ID");
 
-        username_txt9.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        username_txt9.addActionListener(new java.awt.event.ActionListener() {
+        id_student.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        id_student.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                username_txt9ActionPerformed(evt);
+                id_studentActionPerformed(evt);
             }
         });
 
@@ -503,10 +523,10 @@ public class SignUpForm extends javax.swing.JFrame {
         jLabel19.setForeground(new java.awt.Color(153, 153, 153));
         jLabel19.setText("Password");
 
-        password_txt2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        password_txt2.addActionListener(new java.awt.event.ActionListener() {
+        password_student.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        password_student.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                password_txt2ActionPerformed(evt);
+                password_studentActionPerformed(evt);
             }
         });
 
@@ -523,10 +543,10 @@ public class SignUpForm extends javax.swing.JFrame {
         jLabel20.setForeground(new java.awt.Color(153, 153, 153));
         jLabel20.setText("Re - Password");
 
-        password_txt3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        password_txt3.addActionListener(new java.awt.event.ActionListener() {
+        re_password_student.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        re_password_student.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                password_txt3ActionPerformed(evt);
+                re_password_studentActionPerformed(evt);
             }
         });
 
@@ -538,24 +558,24 @@ public class SignUpForm extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(0, 0, 0));
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("SIGN UP");
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        signup_button.setBackground(new java.awt.Color(0, 0, 0));
+        signup_button.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        signup_button.setForeground(new java.awt.Color(255, 255, 255));
+        signup_button.setText("SIGN UP");
+        signup_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        signup_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                signup_buttonActionPerformed(evt);
             }
         });
 
-        jComboBox1.setEditable(true);
-        jComboBox1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Dept of Computer Science and Engineering", "Dept of Mathematics", "Dept of Physics", "Dept of Islamic Studies", "Dept of Finance" }));
-        jComboBox1.setBorder(null);
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        department_student.setEditable(true);
+        department_student.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        department_student.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Dept of Computer Science and Engineering", "Dept of Mathematics", "Dept of Physics", "Dept of Islamic Studies", "Dept of Finance" }));
+        department_student.setBorder(null);
+        department_student.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                department_studentActionPerformed(evt);
             }
         });
 
@@ -564,14 +584,14 @@ public class SignUpForm extends javax.swing.JFrame {
         jLabel21.setForeground(new java.awt.Color(153, 153, 153));
         jLabel21.setText("Department");
 
-        jComboBox2.setEditable(true);
-        jComboBox2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jComboBox2.setMaximumRowCount(100);
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", " " }));
-        jComboBox2.setBorder(null);
-        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+        batch_student.setEditable(true);
+        batch_student.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        batch_student.setMaximumRowCount(100);
+        batch_student.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", " " }));
+        batch_student.setBorder(null);
+        batch_student.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox2ActionPerformed(evt);
+                batch_studentActionPerformed(evt);
             }
         });
 
@@ -580,13 +600,13 @@ public class SignUpForm extends javax.swing.JFrame {
         jLabel22.setForeground(new java.awt.Color(153, 153, 153));
         jLabel22.setText("Batch(University)");
 
-        jComboBox3.setEditable(true);
-        jComboBox3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2018-19", "2019-20", "2020-21", "2021-22", "2022-23", " " }));
-        jComboBox3.setBorder(null);
-        jComboBox3.addActionListener(new java.awt.event.ActionListener() {
+        session_student.setEditable(true);
+        session_student.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        session_student.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2018-19", "2019-20", "2020-21", "2021-22", "2022-23", " " }));
+        session_student.setBorder(null);
+        session_student.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox3ActionPerformed(evt);
+                session_studentActionPerformed(evt);
             }
         });
 
@@ -600,14 +620,33 @@ public class SignUpForm extends javax.swing.JFrame {
         jLabel24.setForeground(new java.awt.Color(153, 153, 153));
         jLabel24.setText("Blood Group");
 
-        jComboBox4.setEditable(true);
-        jComboBox4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jComboBox4.setMaximumRowCount(15);
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "O positive", "O negative", "A positive", "A negative", "B positive", "B negative", "AB positive", "AB negative", "other" }));
-        jComboBox4.setBorder(null);
-        jComboBox4.addActionListener(new java.awt.event.ActionListener() {
+        blood_group_student.setEditable(true);
+        blood_group_student.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        blood_group_student.setMaximumRowCount(15);
+        blood_group_student.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "O positive", "O negative", "A positive", "A negative", "B positive", "B negative", "AB positive", "AB negative", "other" }));
+        blood_group_student.setBorder(null);
+        blood_group_student.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox4ActionPerformed(evt);
+                blood_group_studentActionPerformed(evt);
+            }
+        });
+
+        jLabel27.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel27.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel27.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel27.setText("Picture");
+
+        jLabelPic.setBackground(new java.awt.Color(204, 204, 204));
+        jLabelPic.setOpaque(true);
+
+        jButtonBrowse.setBackground(new java.awt.Color(0, 0, 0));
+        jButtonBrowse.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButtonBrowse.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonBrowse.setText("Browse");
+        jButtonBrowse.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonBrowse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBrowseActionPerformed(evt);
             }
         });
 
@@ -623,34 +662,38 @@ public class SignUpForm extends javax.swing.JFrame {
                         .addGroup(student_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jCheckBox3)
                             .addGroup(student_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(password_txt2, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(password_student, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel19)
-                                .addComponent(username_txt5, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(username_student, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel14)
                                 .addComponent(jLabel13)
-                                .addComponent(username_txt6, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(email_student, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel15)
-                                .addComponent(username_txt7, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(address_student, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel16)
-                                .addComponent(username_txt8, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(phone_number_student, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel17)
-                                .addComponent(username_txt9, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(id_student, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel18))
                             .addComponent(jCheckBox4)
                             .addGroup(student_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(password_txt3, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(re_password_student, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel20)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(signup_button, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(46, 46, 46)
-                        .addGroup(student_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel21)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel22)
-                            .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel23)
-                            .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel24))
+                        .addGroup(student_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(student_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(department_student, 0, 304, Short.MAX_VALUE)
+                                .addComponent(jLabel21)
+                                .addComponent(batch_student, 0, 304, Short.MAX_VALUE)
+                                .addComponent(jLabel22)
+                                .addComponent(session_student, 0, 304, Short.MAX_VALUE)
+                                .addComponent(jLabel23)
+                                .addComponent(blood_group_student, 0, 304, Short.MAX_VALUE)
+                                .addComponent(jLabel24)
+                                .addComponent(jLabel27)
+                                .addComponent(jLabelPic, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jButtonBrowse, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -667,56 +710,63 @@ public class SignUpForm extends javax.swing.JFrame {
                     .addComponent(jLabel21))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(student_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jComboBox1)
-                    .addComponent(username_txt5, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE))
+                    .addComponent(department_student)
+                    .addComponent(username_student, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(student_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(student_panelLayout.createSequentialGroup()
                         .addComponent(jLabel15)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(username_txt6, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(email_student, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(student_panelLayout.createSequentialGroup()
                         .addComponent(jLabel22)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox2)))
+                        .addComponent(batch_student)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(student_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(student_panelLayout.createSequentialGroup()
                         .addComponent(jLabel16)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(username_txt7, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(address_student, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(student_panelLayout.createSequentialGroup()
                         .addComponent(jLabel23)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox3)))
+                        .addComponent(session_student)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(student_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(student_panelLayout.createSequentialGroup()
                         .addComponent(jLabel17)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(username_txt8, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(phone_number_student, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(student_panelLayout.createSequentialGroup()
                         .addComponent(jLabel24)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox4)))
+                        .addComponent(blood_group_student)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel18)
+                .addGroup(student_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel18)
+                    .addComponent(jLabel27))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(username_txt9, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel19)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(password_txt2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jCheckBox3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel20)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(password_txt3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jCheckBox4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(student_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(student_panelLayout.createSequentialGroup()
+                        .addComponent(id_student, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel19)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(password_student, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jCheckBox3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel20)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(re_password_student, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelPic, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(15, 15, 15)
+                .addGroup(student_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonBrowse)
+                    .addComponent(jCheckBox4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addComponent(signup_button, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(52, 52, 52))
         );
 
@@ -806,61 +856,151 @@ public class SignUpForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_username_txt4ActionPerformed
 
-    private void username_txt5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_username_txt5ActionPerformed
+    private void username_studentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_username_studentActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_username_txt5ActionPerformed
+    }//GEN-LAST:event_username_studentActionPerformed
 
-    private void username_txt6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_username_txt6ActionPerformed
+    private void email_studentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_email_studentActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_username_txt6ActionPerformed
+    }//GEN-LAST:event_email_studentActionPerformed
 
-    private void username_txt7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_username_txt7ActionPerformed
+    private void address_studentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_address_studentActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_username_txt7ActionPerformed
+    }//GEN-LAST:event_address_studentActionPerformed
 
-    private void username_txt8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_username_txt8ActionPerformed
+    private void phone_number_studentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_phone_number_studentActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_username_txt8ActionPerformed
+    }//GEN-LAST:event_phone_number_studentActionPerformed
 
-    private void username_txt9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_username_txt9ActionPerformed
+    private void id_studentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_id_studentActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_username_txt9ActionPerformed
+    }//GEN-LAST:event_id_studentActionPerformed
 
-    private void password_txt2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_password_txt2ActionPerformed
+    private void password_studentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_password_studentActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_password_txt2ActionPerformed
+    }//GEN-LAST:event_password_studentActionPerformed
 
     private void jCheckBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox3ActionPerformed
         // TODO add your handling code here:
+        // TO show the pass word
+        if(jCheckBox3.isSelected())
+        password_student.setEchoChar((char)0);
+        else
+        password_student.setEchoChar('*');
     }//GEN-LAST:event_jCheckBox3ActionPerformed
 
-    private void password_txt3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_password_txt3ActionPerformed
+    private void re_password_studentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_re_password_studentActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_password_txt3ActionPerformed
+    }//GEN-LAST:event_re_password_studentActionPerformed
 
     private void jCheckBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox4ActionPerformed
         // TODO add your handling code here:
+        // TO show the pass word
+        if(jCheckBox4.isSelected())
+        re_password_student.setEchoChar((char)0);
+        else
+        re_password_student.setEchoChar('*');
     }//GEN-LAST:event_jCheckBox4ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void signup_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signup_buttonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+        //if the sign up is clicked
+        if(username_student.getText().length() == 0) 
+           JOptionPane.showMessageDialog(null, "Please enter the username") ;
+       else if(email_student.getText().length() == 0) 
+           JOptionPane.showMessageDialog(null, "Please enter the mail") ;
+       else if(address_student.getText().length() == 0) 
+           JOptionPane.showMessageDialog(null, "Please the address") ;
+       else if(phone_number_student.getText().length() == 0) 
+           JOptionPane.showMessageDialog(null, "Please the phone number") ;
+       else if(id_student.getText().length() == 0) 
+           JOptionPane.showMessageDialog(null, "Please the ID") ;
+       
+       else if(password_student.getText().equals(re_password_student.getText()) == false)
+           JOptionPane.showMessageDialog(null, "Password not matched") ;
+       else if(imagePth == null )
+           JOptionPane.showMessageDialog(null, "Please insert an Image") ;
+       else 
+       {
+           try {
+               
+               String username = username_student.getText() ;
+               String email = email_student.getText() ;
+               String address = address_student.getText() ;
+               String phone_number = phone_number_student.getText() ;
+               String id = id_student.getText() ;
+               String password = password_student.getText() ;
+               
+               String department = department_student.getSelectedItem().toString() ;
+               String batch = batch_student.getSelectedItem().toString() ;
+               String session = session_student.getSelectedItem().toString() ;
+               String blood_group = blood_group_student.getSelectedItem().toString();
+               
+               
+               
+               
+               Class.forName("com.mysql.jdbc.Driver") ;
+               con = DriverManager.getConnection("jdbc:mysql://localhost/student_info_sys" ,"root" ,"");
+               pst = con.prepareStatement("insert into student(username,email,address,phone_number,id,password,department,batch,session,blood_group,picture)values(?,?,?,?,?,?,?,?,?,?,?)") ;
+               
+               pst.setString(1, username);
+               pst.setString(2, email);
+               pst.setString(3, address);
+               pst.setString(4, phone_number);
+               pst.setString(5, id);
+               pst.setString(6, password);
+               pst.setString(7, department);
+               pst.setString(8, batch);
+               pst.setString(9, session);
+               pst.setString(10, blood_group);
+               
+         
+                InputStream img = new FileInputStream(new File(imagePth)) ;
+                pst.setBlob(11, img);
+                
+                
+              
+               if(pst.executeUpdate() != 0)
+               {
+                   JOptionPane.showMessageDialog(null, "Account created");
+                   MainMenu s = new MainMenu() ;
+       
+                    s.setVisible(true);//showing new dialog box
+                    s.pack();//making it dynamic in size
+                    s.setLocationRelativeTo(null);//setting the location
+                    this.dispose();//for closing the loginForm
+               }
+               else 
+                   JOptionPane.showMessageDialog(null, "Something wrong");
+               
+               //JOptionPane.showMessageDialog(this, "Record added");
+               
+           } catch (ClassNotFoundException ex) {
+               Logger.getLogger(SignUpForm.class.getName()).log(Level.SEVERE, null, ex);
+           }
+           catch (Exception ex) {
+               Logger.getLogger(SignUpForm.class.getName()).log(Level.SEVERE, null, ex);
+           }
+       }
+        
+       
+    }//GEN-LAST:event_signup_buttonActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void department_studentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_department_studentActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_department_studentActionPerformed
 
-    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+    private void batch_studentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_batch_studentActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox2ActionPerformed
+    }//GEN-LAST:event_batch_studentActionPerformed
 
-    private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
+    private void session_studentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_session_studentActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox3ActionPerformed
+    }//GEN-LAST:event_session_studentActionPerformed
 
-    private void jComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox4ActionPerformed
+    private void blood_group_studentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_blood_group_studentActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox4ActionPerformed
+    }//GEN-LAST:event_blood_group_studentActionPerformed
 
     private void jComboBox5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox5ActionPerformed
         // TODO add your handling code here:
@@ -869,6 +1009,47 @@ public class SignUpForm extends javax.swing.JFrame {
     private void jComboBox6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox6ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox6ActionPerformed
+
+    
+    public ImageIcon resizePic(String picPath)
+    {
+        ImageIcon myImg = new ImageIcon(picPath) ;
+        Image img = myImg.getImage().getScaledInstance(jLabelPic.getWidth(), jLabelPic.getHeight(), Image.SCALE_SMOOTH) ;
+        ImageIcon myPicture = new ImageIcon(img) ;
+        return myPicture ;
+    }
+    private void jButtonBrowseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBrowseActionPerformed
+        // TODO add your handling code here:
+        //When the browse button for picture is clicked
+        // for selecting image
+        JFileChooser filec = new JFileChooser() ;
+        filec.setCurrentDirectory(new File(System.getProperty("user.home")));
+        
+        //file extension
+        FileNameExtensionFilter fileFilter = new FileNameExtensionFilter("*.Images" , "jpg" , "png" , "gif") ;
+        filec.addChoosableFileFilter(fileFilter);
+        
+        int fileState = filec.showSaveDialog(null) ;
+        
+        //if the user select a file
+        if(fileState == JFileChooser.APPROVE_OPTION)
+        {
+            File selectedFile = filec.getSelectedFile() ;
+            String path = selectedFile.getAbsolutePath() ;
+            imagePth = path ;//for attaching in data base
+            //display the image in the jlabel using resizeImage
+            
+            jLabelPic.setIcon(resizePic(path));
+            //jLabelPic.setIcon(new ImageIcon(path)) ;
+        }
+        //if the user cancel 
+        else if(fileState == JFileChooser.CANCEL_OPTION)
+        {
+            //System.out.println("NO IMAGE SELECTED");
+            JOptionPane.showMessageDialog(null, "No image selected");   
+        }
+        
+    }//GEN-LAST:event_jButtonBrowseActionPerformed
 
     /**
      * @param args the command line arguments
@@ -906,19 +1087,21 @@ public class SignUpForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField address_student;
     private javax.swing.JButton admin_button;
     private javax.swing.JPanel admin_panel;
+    private javax.swing.JComboBox<String> batch_student;
+    private javax.swing.JComboBox<String> blood_group_student;
+    private javax.swing.JComboBox<String> department_student;
     private javax.swing.JPanel dual_panel;
+    private javax.swing.JTextField email_student;
+    private javax.swing.JTextField id_student;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButtonBrowse;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JCheckBox jCheckBox3;
     private javax.swing.JCheckBox jCheckBox4;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JComboBox<String> jComboBox5;
     private javax.swing.JComboBox<String> jComboBox6;
     private javax.swing.JLabel jLabel1;
@@ -940,6 +1123,7 @@ public class SignUpForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -947,24 +1131,24 @@ public class SignUpForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabelPic;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSplitPane jSplitPane1;
+    private javax.swing.JPasswordField password_student;
     private javax.swing.JPasswordField password_txt;
     private javax.swing.JPasswordField password_txt1;
-    private javax.swing.JPasswordField password_txt2;
-    private javax.swing.JPasswordField password_txt3;
+    private javax.swing.JTextField phone_number_student;
+    private javax.swing.JPasswordField re_password_student;
+    private javax.swing.JComboBox<String> session_student;
+    private javax.swing.JButton signup_button;
     private javax.swing.JButton student_button;
     private javax.swing.JPanel student_panel;
+    private javax.swing.JTextField username_student;
     private javax.swing.JTextField username_txt;
     private javax.swing.JTextField username_txt1;
     private javax.swing.JTextField username_txt2;
     private javax.swing.JTextField username_txt3;
     private javax.swing.JTextField username_txt4;
-    private javax.swing.JTextField username_txt5;
-    private javax.swing.JTextField username_txt6;
-    private javax.swing.JTextField username_txt7;
-    private javax.swing.JTextField username_txt8;
-    private javax.swing.JTextField username_txt9;
     // End of variables declaration//GEN-END:variables
 }

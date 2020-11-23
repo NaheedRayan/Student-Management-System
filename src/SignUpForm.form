@@ -76,26 +76,24 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="116" max="-2" attributes="0"/>
-                                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
-                                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                                  </Group>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="116" max="-2" attributes="0"/>
+                                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="101" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
+                                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="student_button" min="-2" pref="135" max="-2" attributes="0"/>
-                                      <Component id="admin_button" min="-2" pref="135" max="-2" attributes="0"/>
+                                      <Component id="admin_button" alignment="0" min="-2" pref="266" max="-2" attributes="0"/>
+                                      <Component id="student_button" alignment="0" min="-2" pref="266" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
-                          <EmptySpace pref="95" max="32767" attributes="0"/>
+                          <EmptySpace pref="39" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -157,6 +155,7 @@
                       <Border info="null"/>
                     </Property>
                     <Property name="borderPainted" type="boolean" value="false"/>
+                    <Property name="opaque" type="boolean" value="false"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="admin_buttonActionPerformed"/>
@@ -666,37 +665,42 @@
                                       <Group type="103" groupAlignment="1" attributes="0">
                                           <Component id="jCheckBox3" alignment="1" min="-2" max="-2" attributes="0"/>
                                           <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                              <Component id="password_txt2" alignment="0" min="-2" pref="304" max="-2" attributes="0"/>
+                                              <Component id="password_student" alignment="0" min="-2" pref="304" max="-2" attributes="0"/>
                                               <Component id="jLabel19" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="username_txt5" alignment="0" min="-2" pref="304" max="-2" attributes="0"/>
+                                              <Component id="username_student" alignment="0" min="-2" pref="304" max="-2" attributes="0"/>
                                               <Component id="jLabel14" alignment="0" min="-2" max="-2" attributes="0"/>
                                               <Component id="jLabel13" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="username_txt6" alignment="0" min="-2" pref="304" max="-2" attributes="0"/>
+                                              <Component id="email_student" alignment="0" min="-2" pref="304" max="-2" attributes="0"/>
                                               <Component id="jLabel15" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="username_txt7" alignment="0" min="-2" pref="304" max="-2" attributes="0"/>
+                                              <Component id="address_student" alignment="0" min="-2" pref="304" max="-2" attributes="0"/>
                                               <Component id="jLabel16" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="username_txt8" alignment="0" min="-2" pref="304" max="-2" attributes="0"/>
+                                              <Component id="phone_number_student" alignment="0" min="-2" pref="304" max="-2" attributes="0"/>
                                               <Component id="jLabel17" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="username_txt9" alignment="0" min="-2" pref="304" max="-2" attributes="0"/>
+                                              <Component id="id_student" alignment="0" min="-2" pref="304" max="-2" attributes="0"/>
                                               <Component id="jLabel18" alignment="0" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <Component id="jCheckBox4" alignment="1" min="-2" max="-2" attributes="0"/>
                                           <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                              <Component id="password_txt3" alignment="0" min="-2" pref="304" max="-2" attributes="0"/>
+                                              <Component id="re_password_student" alignment="0" min="-2" pref="304" max="-2" attributes="0"/>
                                               <Component id="jLabel20" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jButton2" alignment="0" min="-2" pref="136" max="-2" attributes="0"/>
+                                              <Component id="signup_button" alignment="0" min="-2" pref="136" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jComboBox1" min="-2" pref="304" max="-2" attributes="0"/>
-                                          <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jComboBox2" alignment="0" min="-2" pref="304" max="-2" attributes="0"/>
-                                          <Component id="jLabel22" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jComboBox3" alignment="0" min="-2" pref="304" max="-2" attributes="0"/>
-                                          <Component id="jLabel23" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jComboBox4" alignment="0" min="-2" pref="304" max="-2" attributes="0"/>
-                                          <Component id="jLabel24" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="department_student" pref="304" max="32767" attributes="0"/>
+                                              <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
+                                              <Component id="batch_student" alignment="0" pref="304" max="32767" attributes="0"/>
+                                              <Component id="jLabel22" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="session_student" alignment="0" pref="304" max="32767" attributes="0"/>
+                                              <Component id="jLabel23" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="blood_group_student" alignment="0" pref="304" max="32767" attributes="0"/>
+                                              <Component id="jLabel24" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabel27" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabelPic" max="32767" attributes="0"/>
+                                          </Group>
+                                          <Component id="jButtonBrowse" min="-2" pref="136" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
@@ -719,20 +723,20 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jComboBox1" max="32767" attributes="0"/>
-                                  <Component id="username_txt5" pref="38" max="32767" attributes="0"/>
+                                  <Component id="department_student" max="32767" attributes="0"/>
+                                  <Component id="username_student" pref="38" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
                                       <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="username_txt6" min="-2" pref="38" max="-2" attributes="0"/>
+                                      <Component id="email_student" min="-2" pref="38" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" attributes="0">
                                       <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jComboBox2" max="32767" attributes="0"/>
+                                      <Component id="batch_student" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
@@ -740,12 +744,12 @@
                                   <Group type="102" attributes="0">
                                       <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="username_txt7" min="-2" pref="38" max="-2" attributes="0"/>
+                                      <Component id="address_student" min="-2" pref="38" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" attributes="0">
                                       <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jComboBox3" max="32767" attributes="0"/>
+                                      <Component id="session_student" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
@@ -753,32 +757,43 @@
                                   <Group type="102" attributes="0">
                                       <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="username_txt8" min="-2" pref="38" max="-2" attributes="0"/>
+                                      <Component id="phone_number_student" min="-2" pref="38" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" attributes="0">
                                       <Component id="jLabel24" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jComboBox4" max="32767" attributes="0"/>
+                                      <Component id="blood_group_student" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel27" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="username_txt9" min="-2" pref="38" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="password_txt2" min="-2" pref="38" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jCheckBox3" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="password_txt3" min="-2" pref="38" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jCheckBox4" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="54" max="32767" attributes="0"/>
-                              <Component id="jButton2" min="-2" pref="53" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="id_student" min="-2" pref="38" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="password_student" min="-2" pref="38" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="jCheckBox3" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="re_password_student" min="-2" pref="38" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="jLabelPic" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jButtonBrowse" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jCheckBox4" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace pref="43" max="32767" attributes="0"/>
+                              <Component id="signup_button" min="-2" pref="53" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -821,14 +836,14 @@
                         <Property name="text" type="java.lang.String" value="Username"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="username_txt5">
+                    <Component class="javax.swing.JTextField" name="username_student">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Tahoma" size="12" style="1"/>
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="username_txt5ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="username_studentActionPerformed"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel15">
@@ -845,14 +860,14 @@
                         <Property name="text" type="java.lang.String" value="email"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="username_txt6">
+                    <Component class="javax.swing.JTextField" name="email_student">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Tahoma" size="12" style="1"/>
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="username_txt6ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="email_studentActionPerformed"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel16">
@@ -869,14 +884,14 @@
                         <Property name="text" type="java.lang.String" value="Address"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="username_txt7">
+                    <Component class="javax.swing.JTextField" name="address_student">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Tahoma" size="12" style="1"/>
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="username_txt7ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="address_studentActionPerformed"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel17">
@@ -893,14 +908,14 @@
                         <Property name="text" type="java.lang.String" value="Phone Number"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="username_txt8">
+                    <Component class="javax.swing.JTextField" name="phone_number_student">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Tahoma" size="12" style="1"/>
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="username_txt8ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="phone_number_studentActionPerformed"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel18">
@@ -917,14 +932,14 @@
                         <Property name="text" type="java.lang.String" value="ID"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="username_txt9">
+                    <Component class="javax.swing.JTextField" name="id_student">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Tahoma" size="12" style="1"/>
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="username_txt9ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="id_studentActionPerformed"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel19">
@@ -941,14 +956,14 @@
                         <Property name="text" type="java.lang.String" value="Password"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JPasswordField" name="password_txt2">
+                    <Component class="javax.swing.JPasswordField" name="password_student">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Tahoma" size="12" style="1"/>
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="password_txt2ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="password_studentActionPerformed"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="jCheckBox3">
@@ -976,14 +991,14 @@
                         <Property name="text" type="java.lang.String" value="Re - Password"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JPasswordField" name="password_txt3">
+                    <Component class="javax.swing.JPasswordField" name="re_password_student">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Tahoma" size="12" style="1"/>
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="password_txt3ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="re_password_studentActionPerformed"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="jCheckBox4">
@@ -997,7 +1012,7 @@
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox4ActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JButton" name="jButton2">
+                    <Component class="javax.swing.JButton" name="signup_button">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="0" green="0" red="0" type="rgb"/>
@@ -1014,10 +1029,10 @@
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="signup_buttonActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JComboBox" name="jComboBox1">
+                    <Component class="javax.swing.JComboBox" name="department_student">
                       <Properties>
                         <Property name="editable" type="boolean" value="true"/>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -1037,7 +1052,7 @@
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox1ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="department_studentActionPerformed"/>
                       </Events>
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -1057,7 +1072,7 @@
                         <Property name="text" type="java.lang.String" value="Department"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JComboBox" name="jComboBox2">
+                    <Component class="javax.swing.JComboBox" name="batch_student">
                       <Properties>
                         <Property name="editable" type="boolean" value="true"/>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -1094,7 +1109,7 @@
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox2ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="batch_studentActionPerformed"/>
                       </Events>
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -1114,7 +1129,7 @@
                         <Property name="text" type="java.lang.String" value="Batch(University)"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JComboBox" name="jComboBox3">
+                    <Component class="javax.swing.JComboBox" name="session_student">
                       <Properties>
                         <Property name="editable" type="boolean" value="true"/>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -1135,7 +1150,7 @@
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox3ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="session_studentActionPerformed"/>
                       </Events>
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -1169,7 +1184,7 @@
                         <Property name="text" type="java.lang.String" value="Blood Group"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JComboBox" name="jComboBox4">
+                    <Component class="javax.swing.JComboBox" name="blood_group_student">
                       <Properties>
                         <Property name="editable" type="boolean" value="true"/>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -1194,11 +1209,53 @@
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox4ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="blood_group_studentActionPerformed"/>
                       </Events>
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                       </AuxValues>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel27">
+                      <Properties>
+                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                        </Property>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Tahoma" size="11" style="1"/>
+                        </Property>
+                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="99" green="99" red="99" type="rgb"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Picture"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabelPic">
+                      <Properties>
+                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="cc" green="cc" red="cc" type="rgb"/>
+                        </Property>
+                        <Property name="opaque" type="boolean" value="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JButton" name="jButtonBrowse">
+                      <Properties>
+                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="0" green="0" red="0" type="rgb"/>
+                        </Property>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Tahoma" size="14" style="1"/>
+                        </Property>
+                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Browse"/>
+                        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                          <Color id="Hand Cursor"/>
+                        </Property>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonBrowseActionPerformed"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
