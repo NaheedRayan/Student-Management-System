@@ -1,3 +1,7 @@
+
+import java.awt.CardLayout;
+import javax.swing.JOptionPane;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -13,8 +17,26 @@ public class MainMenu extends javax.swing.JFrame {
     /**
      * Creates new form New
      */
+    CardLayout cardlayout;
+    
     public MainMenu() {
         initComponents();
+        //setting the form at centre
+        this.setLocationRelativeTo(null);
+        cardlayout = (CardLayout) option_panels.getLayout();
+    }
+
+    MainMenu(String hello) {
+//        JOptionPane.showMessageDialog(null, hello);
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        initComponents();
+        //setting the form at centre
+        this.setLocationRelativeTo(null);
+        
+        cardlayout = (CardLayout) option_panels.getLayout();
+        
+        //test.setText(hello);
+        
     }
 
     /**
@@ -26,21 +48,286 @@ public class MainMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jSplitPane1 = new javax.swing.JSplitPane();
+        jPanel2 = new javax.swing.JPanel();
+        admin_button = new javax.swing.JButton();
+        grades_button = new javax.swing.JButton();
+        attendence_button = new javax.swing.JButton();
+        about_button = new javax.swing.JButton();
+        student_button = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        option_panels = new javax.swing.JPanel();
+        student_info = new javax.swing.JPanel();
+        admin_info = new javax.swing.JPanel();
+        about = new javax.swing.JPanel();
+        attendence = new javax.swing.JPanel();
+        grades = new javax.swing.JPanel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        jSplitPane1.setDividerLocation(350);
+        jSplitPane1.setDividerSize(1);
+
+        jPanel2.setBackground(new java.awt.Color(0, 77, 136));
+
+        admin_button.setBackground(new java.awt.Color(0, 77, 136));
+        admin_button.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        admin_button.setForeground(new java.awt.Color(255, 255, 255));
+        admin_button.setText("Admin Info");
+        admin_button.setBorder(null);
+        admin_button.setBorderPainted(false);
+        admin_button.setOpaque(false);
+        admin_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                admin_buttonActionPerformed(evt);
+            }
+        });
+
+        grades_button.setBackground(new java.awt.Color(0, 77, 136));
+        grades_button.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        grades_button.setForeground(new java.awt.Color(255, 255, 255));
+        grades_button.setText("Grades");
+        grades_button.setBorder(null);
+        grades_button.setBorderPainted(false);
+        grades_button.setOpaque(false);
+        grades_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                grades_buttonActionPerformed(evt);
+            }
+        });
+
+        attendence_button.setBackground(new java.awt.Color(0, 77, 136));
+        attendence_button.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        attendence_button.setForeground(new java.awt.Color(255, 255, 255));
+        attendence_button.setText("Attendence");
+        attendence_button.setBorder(null);
+        attendence_button.setBorderPainted(false);
+        attendence_button.setOpaque(false);
+        attendence_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                attendence_buttonActionPerformed(evt);
+            }
+        });
+
+        about_button.setBackground(new java.awt.Color(0, 77, 136));
+        about_button.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        about_button.setForeground(new java.awt.Color(255, 255, 255));
+        about_button.setText("About");
+        about_button.setBorder(null);
+        about_button.setBorderPainted(false);
+        about_button.setOpaque(false);
+        about_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                about_buttonActionPerformed(evt);
+            }
+        });
+
+        student_button.setBackground(new java.awt.Color(0, 77, 136));
+        student_button.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        student_button.setForeground(new java.awt.Color(255, 255, 255));
+        student_button.setText("Student Info");
+        student_button.setBorder(null);
+        student_button.setBorderPainted(false);
+        student_button.setOpaque(false);
+        student_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                student_buttonActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("STMS");
+
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Student Management System ");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(124, 124, 124))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(87, 87, 87)
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(attendence_button, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(about_button, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(grades_button, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(admin_button, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(student_button, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(0, 42, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(83, 83, 83)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1)
+                .addGap(79, 79, 79)
+                .addComponent(student_button, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
+                .addComponent(admin_button, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(grades_button, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addComponent(attendence_button, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addComponent(about_button, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(268, Short.MAX_VALUE))
+        );
+
+        jSplitPane1.setLeftComponent(jPanel2);
+
+        option_panels.setLayout(new java.awt.CardLayout());
+
+        student_info.setBackground(new java.awt.Color(153, 153, 255));
+
+        javax.swing.GroupLayout student_infoLayout = new javax.swing.GroupLayout(student_info);
+        student_info.setLayout(student_infoLayout);
+        student_infoLayout.setHorizontalGroup(
+            student_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1138, Short.MAX_VALUE)
+        );
+        student_infoLayout.setVerticalGroup(
+            student_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 853, Short.MAX_VALUE)
+        );
+
+        option_panels.add(student_info, "student_card");
+
+        admin_info.setBackground(new java.awt.Color(255, 153, 255));
+
+        javax.swing.GroupLayout admin_infoLayout = new javax.swing.GroupLayout(admin_info);
+        admin_info.setLayout(admin_infoLayout);
+        admin_infoLayout.setHorizontalGroup(
+            admin_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1138, Short.MAX_VALUE)
+        );
+        admin_infoLayout.setVerticalGroup(
+            admin_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 853, Short.MAX_VALUE)
+        );
+
+        option_panels.add(admin_info, "admin_card");
+
+        about.setBackground(new java.awt.Color(51, 0, 204));
+
+        javax.swing.GroupLayout aboutLayout = new javax.swing.GroupLayout(about);
+        about.setLayout(aboutLayout);
+        aboutLayout.setHorizontalGroup(
+            aboutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1138, Short.MAX_VALUE)
+        );
+        aboutLayout.setVerticalGroup(
+            aboutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 853, Short.MAX_VALUE)
+        );
+
+        option_panels.add(about, "about_card");
+
+        attendence.setBackground(new java.awt.Color(255, 255, 102));
+
+        javax.swing.GroupLayout attendenceLayout = new javax.swing.GroupLayout(attendence);
+        attendence.setLayout(attendenceLayout);
+        attendenceLayout.setHorizontalGroup(
+            attendenceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1138, Short.MAX_VALUE)
+        );
+        attendenceLayout.setVerticalGroup(
+            attendenceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 853, Short.MAX_VALUE)
+        );
+
+        option_panels.add(attendence, "attendence_card");
+
+        grades.setBackground(new java.awt.Color(51, 255, 51));
+
+        javax.swing.GroupLayout gradesLayout = new javax.swing.GroupLayout(grades);
+        grades.setLayout(gradesLayout);
+        gradesLayout.setHorizontalGroup(
+            gradesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1138, Short.MAX_VALUE)
+        );
+        gradesLayout.setVerticalGroup(
+            gradesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 853, Short.MAX_VALUE)
+        );
+
+        option_panels.add(grades, "grades_card");
+
+        jSplitPane1.setRightComponent(option_panels);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1490, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jSplitPane1)
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void admin_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_admin_buttonActionPerformed
+        // TODO add your handling code here:
+        cardlayout.show(option_panels, "admin_card");
+    }//GEN-LAST:event_admin_buttonActionPerformed
+
+    private void grades_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_grades_buttonActionPerformed
+        // TODO add your handling code here:
+        cardlayout.show(option_panels, "grades_card");
+    }//GEN-LAST:event_grades_buttonActionPerformed
+
+    private void attendence_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_attendence_buttonActionPerformed
+        // TODO add your handling code here:
+        cardlayout.show(option_panels, "attendence_card");
+    }//GEN-LAST:event_attendence_buttonActionPerformed
+
+    private void about_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_about_buttonActionPerformed
+        // TODO add your handling code here:
+        cardlayout.show(option_panels, "about_card");
+    }//GEN-LAST:event_about_buttonActionPerformed
+
+    private void student_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_student_buttonActionPerformed
+        // TODO add your handling code here:
+        cardlayout.show(option_panels, "student_card");
+        
+    }//GEN-LAST:event_student_buttonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +366,21 @@ public class MainMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel about;
+    private javax.swing.JButton about_button;
+    private javax.swing.JButton admin_button;
+    private javax.swing.JPanel admin_info;
+    private javax.swing.JPanel attendence;
+    private javax.swing.JButton attendence_button;
+    private javax.swing.JPanel grades;
+    private javax.swing.JButton grades_button;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JSplitPane jSplitPane1;
+    private javax.swing.JPanel option_panels;
+    private javax.swing.JButton student_button;
+    private javax.swing.JPanel student_info;
     // End of variables declaration//GEN-END:variables
 }

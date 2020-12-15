@@ -1,5 +1,13 @@
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -23,7 +31,10 @@ public class LoginForm extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         
     }
-
+    
+    Connection con ;
+    PreparedStatement pst , pst1 ;
+    ResultSet rs , rs1 ;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -44,15 +55,15 @@ public class LoginForm extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        username_txt = new javax.swing.JTextField();
+        login_username = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        signin = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jCheckBox1 = new javax.swing.JCheckBox();
-        password_txt = new javax.swing.JPasswordField();
+        login_password = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1100, 800));
@@ -141,10 +152,10 @@ public class LoginForm extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(153, 153, 153));
         jLabel4.setText("Password");
 
-        username_txt.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        username_txt.addActionListener(new java.awt.event.ActionListener() {
+        login_username.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        login_username.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                username_txtActionPerformed(evt);
+                login_usernameActionPerformed(evt);
             }
         });
 
@@ -153,14 +164,14 @@ public class LoginForm extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(102, 102, 102));
         jLabel5.setText("Forgot your Password?");
 
-        jButton1.setBackground(new java.awt.Color(0, 0, 0));
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("SIGN IN");
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        signin.setBackground(new java.awt.Color(0, 0, 0));
+        signin.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        signin.setForeground(new java.awt.Color(255, 255, 255));
+        signin.setText("SIGN IN");
+        signin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        signin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                signinActionPerformed(evt);
             }
         });
 
@@ -195,10 +206,10 @@ public class LoginForm extends javax.swing.JFrame {
             }
         });
 
-        password_txt.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        password_txt.addActionListener(new java.awt.event.ActionListener() {
+        login_password.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        login_password.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                password_txtActionPerformed(evt);
+                login_passwordActionPerformed(evt);
             }
         });
 
@@ -220,18 +231,18 @@ public class LoginForm extends javax.swing.JFrame {
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel7)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(signin, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addComponent(jCheckBox1)
                                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(username_txt)
+                                            .addComponent(login_username)
                                             .addGroup(jPanel3Layout.createSequentialGroup()
                                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addComponent(jLabel4)
                                                     .addComponent(jLabel3))
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                 .addComponent(jLabel5))
-                                            .addComponent(password_txt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                            .addComponent(login_password, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                 .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
@@ -249,17 +260,17 @@ public class LoginForm extends javax.swing.JFrame {
                 .addGap(74, 74, 74)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(username_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(login_username, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(password_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(login_password, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(7, 7, 7)
                 .addComponent(jCheckBox1)
                 .addGap(23, 23, 23)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(signin, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(192, Short.MAX_VALUE))
         );
 
@@ -290,26 +301,98 @@ public class LoginForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void username_txtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_username_txtActionPerformed
+    private void login_usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_login_usernameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_username_txtActionPerformed
+    }//GEN-LAST:event_login_usernameActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void signinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signinActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        try {
+            
+            
+            if(login_username.getText().isEmpty() ||login_password.getText().isEmpty() )
+            {
+                JOptionPane.showMessageDialog(null, "Fields cannot be empty");
+            }
+            else 
+            {
+                String username = login_username.getText() ;
+                String password = login_password.getText() ;
+                
+                
+                Class.forName("com.mysql.jdbc.Driver") ;
+                con = DriverManager.getConnection("jdbc:mysql://localhost/student_info_sys" ,"root" ,"");
+                pst = con.prepareStatement("select * from student where username = ? and password = ? ") ;
+                
+                pst.setString(1, username);
+                pst.setString(2, password);
+                rs = pst.executeQuery();
+                
+                //this part is for the admin table
+                pst1 = con.prepareStatement("select * from admin where username = ? and password = ? ") ;
+                
+                pst1.setString(1, username);
+                pst1.setString(2, password);
+                rs1 = pst1.executeQuery();
+                
+                
+                
+                
+                if(rs.next())//if the password is correct for the student table
+                {
+                   MainMenu s = new MainMenu("student") ;
+                   this.hide();
+                   s.setLocationRelativeTo(null);//setting the location
+                   s.setVisible(true);//showing new dialog box
+                   s.pack();//making it dynamic in size
+                   
+                   
+                    //this.dispose();//for closing the loginForm
+                }
+                else if(rs1.next())//for the admin table
+                {
+                   MainMenu s = new MainMenu("admin") ;
+                   this.hide();
+                   s.setLocationRelativeTo(null);//setting the location
+                   s.setVisible(true);//showing new dialog box
+                   s.pack();//making it dynamic in size
+                   
+                   
+                    //this.dispose();//for closing the loginForm
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(null, "Username or Password do not match");
+                    login_username.setText("");
+                    login_password.setText("");//for making them blank
+                    login_username.requestFocus();
+                      
+                }
+                
+                
+            }
+            
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(LoginForm.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(LoginForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+              
+    }//GEN-LAST:event_signinActionPerformed
 
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
         // TODO add your handling code here:
         // TO show the pass word 
         if(jCheckBox1.isSelected())
-            password_txt.setEchoChar((char)0);
+            login_password.setEchoChar((char)0);
         else
-            password_txt.setEchoChar('*');
+            login_password.setEchoChar('*');
     }//GEN-LAST:event_jCheckBox1ActionPerformed
 
-    private void password_txtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_password_txtActionPerformed
+    private void login_passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_login_passwordActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_password_txtActionPerformed
+    }//GEN-LAST:event_login_passwordActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
@@ -358,7 +441,6 @@ public class LoginForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
@@ -376,7 +458,8 @@ public class LoginForm extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JSplitPane jSplitPane1;
-    private javax.swing.JPasswordField password_txt;
-    private javax.swing.JTextField username_txt;
+    private javax.swing.JPasswordField login_password;
+    private javax.swing.JTextField login_username;
+    private javax.swing.JButton signin;
     // End of variables declaration//GEN-END:variables
 }
