@@ -924,7 +924,7 @@ public class SignUpForm extends javax.swing.JFrame {
                if(pst.executeUpdate() != 0)
                {
                    JOptionPane.showMessageDialog(null, "Account created");
-                   MainMenu s = new MainMenu() ;
+                   MainMenu s = new MainMenu("admin") ;
        
                     s.setVisible(true);//showing new dialog box
                     s.pack();//making it dynamic in size
@@ -1083,7 +1083,7 @@ public class SignUpForm extends javax.swing.JFrame {
                if(pst.executeUpdate() != 0)
                {
                    JOptionPane.showMessageDialog(null, "Account created");
-                   MainMenu s = new MainMenu() ;
+                   MainMenu s = new MainMenu("student") ;
        
                     s.setVisible(true);//showing new dialog box
                     s.pack();//making it dynamic in size
