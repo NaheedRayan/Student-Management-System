@@ -1,16 +1,20 @@
 
 import java.awt.CardLayout;
 import java.awt.Image;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
@@ -19,15 +23,14 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author ASUS
  */
 public class SignUpForm extends javax.swing.JFrame {
 
-    
     CardLayout cardlayout;
+
     /**
      * Creates new form SignUpForm
      */
@@ -35,13 +38,13 @@ public class SignUpForm extends javax.swing.JFrame {
         initComponents();
         //setting the form at centre
         this.setLocationRelativeTo(null);
-        
+
         cardlayout = (CardLayout) dual_panel.getLayout();
     }
-    
-   String imagePth = null ;
-   Connection con ;
-   PreparedStatement pst ;
+
+    String imagePth = null;
+    Connection con;
+    PreparedStatement pst;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -127,15 +130,20 @@ public class SignUpForm extends javax.swing.JFrame {
         jSplitPane1.setDividerSize(1);
 
         jPanel2.setBackground(new java.awt.Color(0, 77, 136));
+        jPanel2.setLayout(null);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("STMS");
+        jPanel2.add(jLabel2);
+        jLabel2.setBounds(116, 50, 100, 44);
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Student Management System ");
+        jPanel2.add(jLabel1);
+        jLabel1.setBounds(82, 100, 172, 14);
 
         admin_button.setBackground(new java.awt.Color(0, 77, 136));
         admin_button.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -149,6 +157,8 @@ public class SignUpForm extends javax.swing.JFrame {
                 admin_buttonActionPerformed(evt);
             }
         });
+        jPanel2.add(admin_button);
+        admin_button.setBounds(44, 346, 266, 49);
 
         student_button.setBackground(new java.awt.Color(0, 77, 136));
         student_button.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -161,39 +171,8 @@ public class SignUpForm extends javax.swing.JFrame {
                 student_buttonActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(116, 116, 116)
-                        .addComponent(jLabel2))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(82, 82, 82)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(44, 44, 44)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(admin_button, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(student_button, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(39, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1)
-                .addGap(232, 232, 232)
-                .addComponent(admin_button, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(student_button, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(324, Short.MAX_VALUE))
-        );
+        jPanel2.add(student_button);
+        student_button.setBounds(44, 425, 266, 49);
 
         jSplitPane1.setLeftComponent(jPanel2);
 
@@ -836,18 +815,6 @@ public class SignUpForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void student_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_student_buttonActionPerformed
-        // TODO add your handling code here:
-        //when student is clicked
-        cardlayout.show(dual_panel, "student_card");
-    }//GEN-LAST:event_student_buttonActionPerformed
-
-    private void admin_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_admin_buttonActionPerformed
-        // TODO add your handling code here:
-        //when admin is pressed
-        cardlayout.show(dual_panel, "admin_card");
-    }//GEN-LAST:event_admin_buttonActionPerformed
-
     private void admin_usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_admin_usernameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_admin_usernameActionPerformed
@@ -859,92 +826,80 @@ public class SignUpForm extends javax.swing.JFrame {
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
         // TODO add your handling code here:
         // TO show the pass word
-        if(jCheckBox1.isSelected())
-        admin_password.setEchoChar((char)0);
-        else
-        admin_password.setEchoChar('*');
+        if (jCheckBox1.isSelected()) {
+            admin_password.setEchoChar((char) 0);
+        } else {
+            admin_password.setEchoChar('*');
+        }
     }//GEN-LAST:event_jCheckBox1ActionPerformed
 
     private void admin_signupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_admin_signupActionPerformed
         // TODO add your handling code here:
-       //if the sign up is clicked
-        if(admin_username.getText().length() == 0) 
-           JOptionPane.showMessageDialog(null, "Please enter the username") ;
-       else if(admin_email.getText().length() == 0) 
-           JOptionPane.showMessageDialog(null, "Please enter the mail") ;
-       else if(admin_address.getText().length() == 0) 
-           JOptionPane.showMessageDialog(null, "Please the address") ;
-       else if(admin_phone_number.getText().length() == 0) 
-           JOptionPane.showMessageDialog(null, "Please the phone number") ;
-       else if(admin_id.getText().length() == 0) 
-           JOptionPane.showMessageDialog(null, "Please the ID") ;
-       
-       else if(admin_password.getText().equals(admin_re_password.getText()) == false)
-           JOptionPane.showMessageDialog(null, "Password not matched") ;
-       else if(imagePth == null )
-           JOptionPane.showMessageDialog(null, "Please insert an Image") ;
-       else 
-       {
-           try {
-               
-               String username = admin_username.getText() ;
-               String email = admin_email.getText() ;
-               String address = admin_address.getText() ;
-               String phone_number = admin_phone_number.getText() ;
-               String id = admin_id.getText() ;
-               String password = admin_password.getText() ;
-               
-               String department = admin_department.getSelectedItem().toString() ;
-               String occupation = admin_occupation.getSelectedItem().toString() ;
-               
-               
-               
-               
-               
-               Class.forName("com.mysql.jdbc.Driver") ;
-               con = DriverManager.getConnection("jdbc:mysql://localhost/student_info_sys" ,"root" ,"");
-               pst = con.prepareStatement("insert into admin(username,email,address,phone_number,id,password,department,occupation,picture)values(?,?,?,?,?,?,?,?,?)") ;
-               
-               pst.setString(1, username);
-               pst.setString(2, email);
-               pst.setString(3, address);
-               pst.setString(4, phone_number);
-               pst.setString(5, id);
-               pst.setString(6, password);
-               pst.setString(7, department);
-               pst.setString(8, occupation);
-               
-               
-         
-                InputStream img = new FileInputStream(new File(imagePth)) ;
+        //if the sign up is clicked
+        if (admin_username.getText().length() == 0) {
+            JOptionPane.showMessageDialog(null, "Please enter the username");
+        } else if (admin_email.getText().length() == 0) {
+            JOptionPane.showMessageDialog(null, "Please enter the mail");
+        } else if (admin_address.getText().length() == 0) {
+            JOptionPane.showMessageDialog(null, "Please the address");
+        } else if (admin_phone_number.getText().length() == 0) {
+            JOptionPane.showMessageDialog(null, "Please the phone number");
+        } else if (admin_id.getText().length() == 0) {
+            JOptionPane.showMessageDialog(null, "Please the ID");
+        } else if (admin_password.getText().equals(admin_re_password.getText()) == false) {
+            JOptionPane.showMessageDialog(null, "Password not matched");
+        } else if (imagePth == null) {
+            JOptionPane.showMessageDialog(null, "Please insert an Image");
+        } else {
+            try {
+
+                String username = admin_username.getText();
+                String email = admin_email.getText();
+                String address = admin_address.getText();
+                String phone_number = admin_phone_number.getText();
+                String id = admin_id.getText();
+                String password = admin_password.getText();
+
+                String department = admin_department.getSelectedItem().toString();
+                String occupation = admin_occupation.getSelectedItem().toString();
+
+                Class.forName("com.mysql.jdbc.Driver");
+                con = DriverManager.getConnection("jdbc:mysql://localhost/student_info_sys", "root", "");
+                pst = con.prepareStatement("insert into admin(username,email,address,phone_number,id,password,department,occupation,picture)values(?,?,?,?,?,?,?,?,?)");
+
+                pst.setString(1, username);
+                pst.setString(2, email);
+                pst.setString(3, address);
+                pst.setString(4, phone_number);
+                pst.setString(5, id);
+                pst.setString(6, password);
+                pst.setString(7, department);
+                pst.setString(8, occupation);
+
+                InputStream img = new FileInputStream(new File(imagePth));
                 pst.setBlob(9, img);
-                
-                
-              
-               if(pst.executeUpdate() != 0)
-               {
-                   JOptionPane.showMessageDialog(null, "Account created");
-                   MainMenu s = new MainMenu("admin") ;
-       
+
+                if (pst.executeUpdate() != 0) {
+                    JOptionPane.showMessageDialog(null, "Account created");
+                    MainMenu s = new MainMenu("admin");
+
                     s.setVisible(true);//showing new dialog box
                     s.pack();//making it dynamic in size
                     s.setLocationRelativeTo(null);//setting the location
                     this.dispose();//for closing the loginForm
-               }
-               else 
-                   JOptionPane.showMessageDialog(null, "Something wrong");
-               
-               //JOptionPane.showMessageDialog(this, "Record added");
-               
-           } catch (ClassNotFoundException ex) {
-               Logger.getLogger(SignUpForm.class.getName()).log(Level.SEVERE, null, ex);
-           }
-           catch (Exception ex) {
-               Logger.getLogger(SignUpForm.class.getName()).log(Level.SEVERE, null, ex);
-           }
-       }
-        
-        
+                } else {
+                    JOptionPane.showMessageDialog(null, "Something wrong");
+                }
+
+                //JOptionPane.showMessageDialog(this, "Record added");
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(SignUpForm.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (Exception ex) {
+                Logger.getLogger(SignUpForm.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+
     }//GEN-LAST:event_admin_signupActionPerformed
 
     private void admin_re_passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_admin_re_passwordActionPerformed
@@ -954,10 +909,11 @@ public class SignUpForm extends javax.swing.JFrame {
     private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
         // TODO add your handling code here:
         // TO show the pass word
-        if(jCheckBox2.isSelected())
-        admin_re_password.setEchoChar((char)0);
-        else
-        admin_re_password.setEchoChar('*');
+        if (jCheckBox2.isSelected()) {
+            admin_re_password.setEchoChar((char) 0);
+        } else {
+            admin_re_password.setEchoChar('*');
+        }
     }//GEN-LAST:event_jCheckBox2ActionPerformed
 
     private void admin_emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_admin_emailActionPerformed
@@ -1003,10 +959,11 @@ public class SignUpForm extends javax.swing.JFrame {
     private void jCheckBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox3ActionPerformed
         // TODO add your handling code here:
         // TO show the pass word
-        if(jCheckBox3.isSelected())
-        password_student.setEchoChar((char)0);
-        else
-        password_student.setEchoChar('*');
+        if (jCheckBox3.isSelected()) {
+            password_student.setEchoChar((char) 0);
+        } else {
+            password_student.setEchoChar('*');
+        }
     }//GEN-LAST:event_jCheckBox3ActionPerformed
 
     private void re_password_studentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_re_password_studentActionPerformed
@@ -1016,94 +973,120 @@ public class SignUpForm extends javax.swing.JFrame {
     private void jCheckBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox4ActionPerformed
         // TODO add your handling code here:
         // TO show the pass word
-        if(jCheckBox4.isSelected())
-        re_password_student.setEchoChar((char)0);
-        else
-        re_password_student.setEchoChar('*');
+        if (jCheckBox4.isSelected()) {
+            re_password_student.setEchoChar((char) 0);
+        } else {
+            re_password_student.setEchoChar('*');
+        }
     }//GEN-LAST:event_jCheckBox4ActionPerformed
 
     private void signup_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signup_buttonActionPerformed
         // TODO add your handling code here:
         //if the sign up is clicked
-        if(username_student.getText().length() == 0) 
-           JOptionPane.showMessageDialog(null, "Please enter the username") ;
-       else if(email_student.getText().length() == 0) 
-           JOptionPane.showMessageDialog(null, "Please enter the mail") ;
-       else if(address_student.getText().length() == 0) 
-           JOptionPane.showMessageDialog(null, "Please the address") ;
-       else if(phone_number_student.getText().length() == 0) 
-           JOptionPane.showMessageDialog(null, "Please the phone number") ;
-       else if(id_student.getText().length() == 0) 
-           JOptionPane.showMessageDialog(null, "Please the ID") ;
-       
-       else if(password_student.getText().equals(re_password_student.getText()) == false)
-           JOptionPane.showMessageDialog(null, "Password not matched") ;
-       else if(imagePth == null )
-           JOptionPane.showMessageDialog(null, "Please insert an Image") ;
-       else 
-       {
-           try {
-               
-               String username = username_student.getText() ;
-               String email = email_student.getText() ;
-               String address = address_student.getText() ;
-               String phone_number = phone_number_student.getText() ;
-               String id = id_student.getText() ;
-               String password = password_student.getText() ;
-               
-               String department = department_student.getSelectedItem().toString() ;
-               String batch = batch_student.getSelectedItem().toString() ;
-               String session = session_student.getSelectedItem().toString() ;
-               String blood_group = blood_group_student.getSelectedItem().toString();
-               
-               
-               
-               
-               Class.forName("com.mysql.jdbc.Driver") ;
-               con = DriverManager.getConnection("jdbc:mysql://localhost/student_info_sys" ,"root" ,"");
-               pst = con.prepareStatement("insert into student(username,email,address,phone_number,id,password,department,batch,session,blood_group,picture)values(?,?,?,?,?,?,?,?,?,?,?)") ;
-               
-               pst.setString(1, username);
-               pst.setString(2, email);
-               pst.setString(3, address);
-               pst.setString(4, phone_number);
-               pst.setString(5, id);
-               pst.setString(6, password);
-               pst.setString(7, department);
-               pst.setString(8, batch);
-               pst.setString(9, session);
-               pst.setString(10, blood_group);
-               
-         
-                InputStream img = new FileInputStream(new File(imagePth)) ;
+        if (username_student.getText().length() == 0) {
+            JOptionPane.showMessageDialog(null, "Please enter the username");
+        } else if (email_student.getText().length() == 0) {
+            JOptionPane.showMessageDialog(null, "Please enter the mail");
+        } else if (address_student.getText().length() == 0) {
+            JOptionPane.showMessageDialog(null, "Please the address");
+        } else if (phone_number_student.getText().length() == 0) {
+            JOptionPane.showMessageDialog(null, "Please the phone number");
+        } else if (id_student.getText().length() == 0) {
+            JOptionPane.showMessageDialog(null, "Please the ID");
+        } else if (password_student.getText().equals(re_password_student.getText()) == false) {
+            JOptionPane.showMessageDialog(null, "Password not matched");
+        } else if (imagePth == null) {
+            JOptionPane.showMessageDialog(null, "Please insert an Image");
+        } else {
+            try {
+
+                String username = username_student.getText();
+                String email = email_student.getText();
+                String address = address_student.getText();
+                String phone_number = phone_number_student.getText();
+                String id = id_student.getText();
+                String password = password_student.getText();
+
+                String department = department_student.getSelectedItem().toString();
+                String batch = batch_student.getSelectedItem().toString();
+                String session = session_student.getSelectedItem().toString();
+                String blood_group = blood_group_student.getSelectedItem().toString();
+
+                Class.forName("com.mysql.jdbc.Driver");
+                con = DriverManager.getConnection("jdbc:mysql://localhost/student_info_sys", "root", "");
+                pst = con.prepareStatement("insert into student(username,email,address,phone_number,id,password,department,batch,session,blood_group,picture)values(?,?,?,?,?,?,?,?,?,?,?)");
+
+                pst.setString(1, username);
+                pst.setString(2, email);
+                pst.setString(3, address);
+                pst.setString(4, phone_number);
+                pst.setString(5, id);
+                pst.setString(6, password);
+                pst.setString(7, department);
+                pst.setString(8, batch);
+                pst.setString(9, session);
+                pst.setString(10, blood_group);
+
+                InputStream img = new FileInputStream(new File(imagePth));
                 pst.setBlob(11, img);
-                
-                
-              
-               if(pst.executeUpdate() != 0)
-               {
-                   JOptionPane.showMessageDialog(null, "Account created");
-                   MainMenu s = new MainMenu("student") ;
-       
+
+                if (pst.executeUpdate() != 0) {
+                    JOptionPane.showMessageDialog(null, "Account created");
+                    MainMenu s = new MainMenu("student");
+
                     s.setVisible(true);//showing new dialog box
                     s.pack();//making it dynamic in size
                     s.setLocationRelativeTo(null);//setting the location
                     this.dispose();//for closing the loginForm
-               }
-               else 
-                   JOptionPane.showMessageDialog(null, "Something wrong");
-               
-               //JOptionPane.showMessageDialog(this, "Record added");
-               
-           } catch (ClassNotFoundException ex) {
-               Logger.getLogger(SignUpForm.class.getName()).log(Level.SEVERE, null, ex);
-           }
-           catch (Exception ex) {
-               Logger.getLogger(SignUpForm.class.getName()).log(Level.SEVERE, null, ex);
-           }
-       }
-        
-       
+                } else {
+                    JOptionPane.showMessageDialog(null, "Something wrong");
+                }
+
+                //this piece of code is used for entering the id in courses table as a foreign key
+                Connection con1 = DriverManager.getConnection("jdbc:mysql://localhost/student_info_sys", "root", "");
+                PreparedStatement pst1 = con1.prepareStatement("insert into courses (id) values(?)");
+                pst1.setString(1, id);
+                pst1.executeUpdate();
+
+                //this piece of code is used for entering the id in subject1 table as a foreign key
+                Connection con2 = DriverManager.getConnection("jdbc:mysql://localhost/student_info_sys", "root", "");
+                PreparedStatement pst2 = con2.prepareStatement("insert into subject1 (id) values(?)");
+                pst2.setString(1, id);
+                pst2.executeUpdate();
+
+                //this piece of code is used for entering the id in subject2 table as a foreign key
+                Connection con3 = DriverManager.getConnection("jdbc:mysql://localhost/student_info_sys", "root", "");
+                PreparedStatement pst3 = con3.prepareStatement("insert into subject2 (id) values(?)");
+                pst3.setString(1, id);
+                pst3.executeUpdate();
+
+                //this piece of code is used for entering the id in subject3 table as a foreign key
+                Connection con4 = DriverManager.getConnection("jdbc:mysql://localhost/student_info_sys", "root", "");
+                PreparedStatement pst4 = con4.prepareStatement("insert into subject3 (id) values(?)");
+                pst4.setString(1, id);
+                pst4.executeUpdate();
+
+                //this piece of code is used for entering the id in subject4 table as a foreign key
+                Connection con5 = DriverManager.getConnection("jdbc:mysql://localhost/student_info_sys", "root", "");
+                PreparedStatement pst5 = con5.prepareStatement("insert into subject4 (id) values(?)");
+                pst5.setString(1, id);
+                pst5.executeUpdate();
+
+                //this piece of code is used for entering the id in subject5 table as a foreign key
+                Connection con6 = DriverManager.getConnection("jdbc:mysql://localhost/student_info_sys", "root", "");
+                PreparedStatement pst6 = con6.prepareStatement("insert into subject5 (id) values(?)");
+                pst6.setString(1, id);
+                pst6.executeUpdate();
+
+                //JOptionPane.showMessageDialog(this, "Record added");
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(SignUpForm.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (Exception ex) {
+                Logger.getLogger(SignUpForm.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+
     }//GEN-LAST:event_signup_buttonActionPerformed
 
     private void department_studentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_department_studentActionPerformed
@@ -1130,85 +1113,89 @@ public class SignUpForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_admin_occupationActionPerformed
 
-    
-    public ImageIcon resizePic(String picPath)
-    {
-        ImageIcon myImg = new ImageIcon(picPath) ;
-        Image img = myImg.getImage().getScaledInstance(jLabelPic.getWidth(), jLabelPic.getHeight(), Image.SCALE_SMOOTH) ;
-        ImageIcon myPicture = new ImageIcon(img) ;
-        return myPicture ;
+    public ImageIcon resizePic(String picPath) {
+        ImageIcon myImg = new ImageIcon(picPath);
+        Image img = myImg.getImage().getScaledInstance(jLabelPic.getWidth(), jLabelPic.getHeight(), Image.SCALE_SMOOTH);
+        ImageIcon myPicture = new ImageIcon(img);
+        return myPicture;
     }
-    public ImageIcon resizePic_admin(String picPath)
-    {
-        ImageIcon myImg = new ImageIcon(picPath) ;
-        Image img = myImg.getImage().getScaledInstance(jLabelPic1.getWidth(), jLabelPic1.getHeight(), Image.SCALE_SMOOTH) ;
-        ImageIcon myPicture = new ImageIcon(img) ;
-        return myPicture ;
+
+    public ImageIcon resizePic_admin(String picPath) {
+        ImageIcon myImg = new ImageIcon(picPath);
+        Image img = myImg.getImage().getScaledInstance(jLabelPic1.getWidth(), jLabelPic1.getHeight(), Image.SCALE_SMOOTH);
+        ImageIcon myPicture = new ImageIcon(img);
+        return myPicture;
     }
     private void jButtonBrowseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBrowseActionPerformed
         // TODO add your handling code here:
         //When the browse button for picture is clicked
         // for selecting image
-        JFileChooser filec = new JFileChooser() ;
+        JFileChooser filec = new JFileChooser();
         filec.setCurrentDirectory(new File(System.getProperty("user.home")));
-        
+
         //file extension
-        FileNameExtensionFilter fileFilter = new FileNameExtensionFilter("*.Images" , "jpg" , "png" , "gif") ;
+        FileNameExtensionFilter fileFilter = new FileNameExtensionFilter("*.Images", "jpg", "png", "gif");
         filec.addChoosableFileFilter(fileFilter);
-        
-        int fileState = filec.showSaveDialog(null) ;
-        
+
+        int fileState = filec.showSaveDialog(null);
+
         //if the user select a file
-        if(fileState == JFileChooser.APPROVE_OPTION)
-        {
-            File selectedFile = filec.getSelectedFile() ;
-            String path = selectedFile.getAbsolutePath() ;
-            imagePth = path ;//for attaching in data base
+        if (fileState == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = filec.getSelectedFile();
+            String path = selectedFile.getAbsolutePath();
+            imagePth = path;//for attaching in data base
             //display the image in the jlabel using resizeImage
-            
+
             jLabelPic.setIcon(resizePic(path));
             //jLabelPic.setIcon(new ImageIcon(path)) ;
-        }
-        //if the user cancel 
-        else if(fileState == JFileChooser.CANCEL_OPTION)
-        {
+        } //if the user cancel 
+        else if (fileState == JFileChooser.CANCEL_OPTION) {
             //System.out.println("NO IMAGE SELECTED");
-            JOptionPane.showMessageDialog(null, "No image selected");   
+            JOptionPane.showMessageDialog(null, "No image selected");
         }
-        
+
     }//GEN-LAST:event_jButtonBrowseActionPerformed
 
     private void jButtonBrowse_adminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBrowse_adminActionPerformed
         // TODO add your handling code here:
         //When the browse button for picture is clicked
         // for selecting image
-        JFileChooser filec = new JFileChooser() ;
+        JFileChooser filec = new JFileChooser();
         filec.setCurrentDirectory(new File(System.getProperty("user.home")));
-        
+
         //file extension
-        FileNameExtensionFilter fileFilter = new FileNameExtensionFilter("*.Images" , "jpg" , "png" , "gif") ;
+        FileNameExtensionFilter fileFilter = new FileNameExtensionFilter("*.Images", "jpg", "png", "gif");
         filec.addChoosableFileFilter(fileFilter);
-        
-        int fileState = filec.showSaveDialog(null) ;
-        
+
+        int fileState = filec.showSaveDialog(null);
+
         //if the user select a file
-        if(fileState == JFileChooser.APPROVE_OPTION)
-        {
-            File selectedFile = filec.getSelectedFile() ;
-            String path = selectedFile.getAbsolutePath() ;
-            imagePth = path ;//for attaching in data base
+        if (fileState == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = filec.getSelectedFile();
+            String path = selectedFile.getAbsolutePath();
+            imagePth = path;//for attaching in data base
             //display the image in the jlabel using resizeImage
-            
+
             jLabelPic1.setIcon(resizePic_admin(path));
             //jLabelPic.setIcon(new ImageIcon(path)) ;
-        }
-        //if the user cancel 
-        else if(fileState == JFileChooser.CANCEL_OPTION)
-        {
+        } //if the user cancel 
+        else if (fileState == JFileChooser.CANCEL_OPTION) {
             //System.out.println("NO IMAGE SELECTED");
-            JOptionPane.showMessageDialog(null, "No image selected");   
+            JOptionPane.showMessageDialog(null, "No image selected");
         }
     }//GEN-LAST:event_jButtonBrowse_adminActionPerformed
+
+    private void student_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_student_buttonActionPerformed
+        // TODO add your handling code here:
+        //when student is clicked
+        cardlayout.show(dual_panel, "student_card");
+    }//GEN-LAST:event_student_buttonActionPerformed
+
+    private void admin_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_admin_buttonActionPerformed
+        // TODO add your handling code here:
+        //when admin is pressed
+        cardlayout.show(dual_panel, "admin_card");
+    }//GEN-LAST:event_admin_buttonActionPerformed
 
     /**
      * @param args the command line arguments
