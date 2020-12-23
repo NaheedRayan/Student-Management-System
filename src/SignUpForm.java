@@ -62,6 +62,7 @@ public class SignUpForm extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         admin_button = new javax.swing.JButton();
         student_button = new javax.swing.JButton();
+        jLabel29 = new javax.swing.JLabel();
         dual_panel = new javax.swing.JPanel();
         admin_panel = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
@@ -126,8 +127,12 @@ public class SignUpForm extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(1100, 800));
         setResizable(false);
 
+        jPanel1.setPreferredSize(new java.awt.Dimension(1150, 800));
+
         jSplitPane1.setDividerLocation(350);
         jSplitPane1.setDividerSize(1);
+        jSplitPane1.setLastDividerLocation(500);
+        jSplitPane1.setPreferredSize(new java.awt.Dimension(1150, 800));
 
         jPanel2.setBackground(new java.awt.Color(0, 77, 136));
         jPanel2.setLayout(null);
@@ -145,9 +150,9 @@ public class SignUpForm extends javax.swing.JFrame {
         jPanel2.add(jLabel1);
         jLabel1.setBounds(82, 100, 172, 14);
 
-        admin_button.setBackground(new java.awt.Color(0, 77, 136));
+        admin_button.setBackground(new java.awt.Color(255, 255, 255));
         admin_button.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        admin_button.setForeground(new java.awt.Color(255, 255, 255));
+        admin_button.setForeground(new java.awt.Color(102, 102, 102));
         admin_button.setText("Admin");
         admin_button.setBorder(null);
         admin_button.setBorderPainted(false);
@@ -160,9 +165,9 @@ public class SignUpForm extends javax.swing.JFrame {
         jPanel2.add(admin_button);
         admin_button.setBounds(44, 346, 266, 49);
 
-        student_button.setBackground(new java.awt.Color(0, 77, 136));
+        student_button.setBackground(new java.awt.Color(255, 255, 255));
         student_button.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        student_button.setForeground(new java.awt.Color(255, 255, 255));
+        student_button.setForeground(new java.awt.Color(102, 102, 102));
         student_button.setText("Student");
         student_button.setBorder(null);
         student_button.setBorderPainted(false);
@@ -173,6 +178,11 @@ public class SignUpForm extends javax.swing.JFrame {
         });
         jPanel2.add(student_button);
         student_button.setBounds(44, 425, 266, 49);
+
+        jLabel29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/WallX_150440_1080x1920.jpeg"))); // NOI18N
+        jLabel29.setText("jLabel29");
+        jPanel2.add(jLabel29);
+        jLabel29.setBounds(0, -6, 350, 800);
 
         jSplitPane1.setLeftComponent(jPanel2);
 
@@ -357,7 +367,7 @@ public class SignUpForm extends javax.swing.JFrame {
                 .addGap(36, 36, 36)
                 .addGroup(admin_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(admin_panelLayout.createSequentialGroup()
-                        .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 701, Short.MAX_VALUE)
+                        .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 752, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(admin_panelLayout.createSequentialGroup()
                         .addGroup(admin_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -384,16 +394,20 @@ public class SignUpForm extends javax.swing.JFrame {
                                 .addComponent(jLabel11)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(admin_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel28)
-                            .addGroup(admin_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jButtonBrowse_admin, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, admin_panelLayout.createSequentialGroup()
                                 .addGroup(admin_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(admin_department, 0, 304, Short.MAX_VALUE)
                                     .addComponent(jLabel25)
                                     .addComponent(admin_occupation, 0, 304, Short.MAX_VALUE)
-                                    .addComponent(jLabel26)
-                                    .addComponent(jLabelPic1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addGap(46, 46, 46))))
+                                    .addComponent(jLabel26))
+                                .addGap(102, 102, 102))
+                            .addGroup(admin_panelLayout.createSequentialGroup()
+                                .addGroup(admin_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jButtonBrowse_admin, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(admin_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel28)
+                                        .addComponent(jLabelPic1, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addContainerGap())))))
         );
         admin_panelLayout.setVerticalGroup(
             admin_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -430,30 +444,29 @@ public class SignUpForm extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(admin_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(admin_panelLayout.createSequentialGroup()
-                        .addGroup(admin_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(admin_panelLayout.createSequentialGroup()
-                                .addComponent(admin_address, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel10)
-                                .addGap(1, 1, 1)
-                                .addComponent(admin_phone_number, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel11)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(admin_id, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(admin_password, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(10, 10, 10)
-                                .addGroup(admin_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jCheckBox1)))
-                            .addComponent(jLabelPic1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(admin_address, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel10)
+                        .addGap(1, 1, 1)
+                        .addComponent(admin_phone_number, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(admin_id, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(admin_password, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addGroup(admin_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel5)
+                            .addComponent(jCheckBox1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(admin_re_password, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(admin_panelLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(1, 1, 1)
+                        .addComponent(jLabelPic1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
                         .addComponent(jButtonBrowse_admin)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 3, Short.MAX_VALUE)
                 .addComponent(jCheckBox2)
@@ -673,7 +686,7 @@ public class SignUpForm extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, student_panelLayout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addGroup(student_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 701, Short.MAX_VALUE)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 752, Short.MAX_VALUE)
                     .addGroup(student_panelLayout.createSequentialGroup()
                         .addGroup(student_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jCheckBox3)
@@ -794,11 +807,11 @@ public class SignUpForm extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1150, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -1279,6 +1292,7 @@ public class SignUpForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
