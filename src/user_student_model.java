@@ -8,11 +8,11 @@
  *
  * @author ASUS
  */
-public class user_student {
+public class user_student_model {
     
     private String username , id , phone_number ,department ,batch ,session;
     
-    public user_student(String username , String id , String phone_number , String department , String batch ,String session)
+    public user_student_model(String username , String id , String phone_number , String department , String batch ,String session)
     {
         this.username = username ;
         this.id = id ;

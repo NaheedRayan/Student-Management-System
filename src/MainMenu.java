@@ -5,15 +5,21 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
+
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -40,6 +46,7 @@ public class MainMenu extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         cardlayout = (CardLayout) option_panels.getLayout();
         show_user();
+        show_student_attendence();
     }
 
     MainMenu(String hello) {
@@ -50,6 +57,7 @@ public class MainMenu extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
 
         show_user();
+        show_student_attendence();
 
         cardlayout = (CardLayout) option_panels.getLayout();
 
@@ -65,9 +73,9 @@ public class MainMenu extends javax.swing.JFrame {
 
     String imagePth = null;
 
-    //for fetching the list
-    public ArrayList<user_student> userList() {
-        ArrayList<user_student> userList = new ArrayList<>();
+    //for fetching the list of student info
+    public ArrayList<user_student_model> userList() {
+        ArrayList<user_student_model> userList = new ArrayList<>();
         try {
 //            String str = search_bar.getText();
             Class.forName("com.mysql.jdbc.Driver");
@@ -77,25 +85,21 @@ public class MainMenu extends javax.swing.JFrame {
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(query1);
 
-            user_student user;
+            user_student_model user;
 
             while (rs.next()) {
-                user = new user_student(rs.getString("username"), rs.getString("id"), rs.getString("phone_number"), rs.getString("department"), rs.getString("batch"), rs.getString("session"));
+                user = new user_student_model(rs.getString("username"), rs.getString("id"), rs.getString("phone_number"), rs.getString("department"), rs.getString("batch"), rs.getString("session"));
                 userList.add(user);
-
             }
-
         } catch (Exception ex) {
-
             JOptionPane.showMessageDialog(null, ex);
             //System.out.println(ex);  
         }
         return userList;
-
     }
 
     public void show_user() {
-        ArrayList<user_student> list = userList();
+        ArrayList<user_student_model> list = userList();
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         //model.fireTableDataChanged();
 
@@ -115,6 +119,55 @@ public class MainMenu extends javax.swing.JFrame {
         jTable1.setModel(model);
         //for refresh
         model.fireTableDataChanged();
+    }
+
+    //for fetching the list of attendence info table
+    public ArrayList<student_attendence_model> attendence_user_List() {
+        ArrayList<student_attendence_model> userList = new ArrayList<>();
+        try {
+//            String str = search_bar.getText();
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/student_info_sys", "root", "");
+
+            String query1 = "SELECT * FROM attendence";
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(query1);
+
+            student_attendence_model obj;
+
+            while (rs.next()) {
+                obj = new student_attendence_model(rs.getString("id"), rs.getString("present"), rs.getString("date"));
+                userList.add(obj);
+
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex);
+            //System.out.println(ex);  
+        }
+        return userList;
+    }
+
+    //this code is for showing student attendence
+    public void show_student_attendence() {
+        ArrayList<student_attendence_model> list = attendence_user_List();
+        DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+        //model.fireTableDataChanged();
+
+        Object[] row = new Object[3];
+        for (int i = 0; i < list.size(); i++) {
+            row[0] = list.get(i).getdate();
+            row[1] = list.get(i).getid();
+            row[2] = list.get(i).getpresent();
+
+            model.addRow(row);
+
+        }
+
+        jTable2.setModel(model);
+//        jTable2.repaint();
+
+        //for refresh
+        //model.fireTableDataChanged();
     }
 
     /**
@@ -199,6 +252,25 @@ public class MainMenu extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         attendence = new javax.swing.JPanel();
+        jLabel52 = new javax.swing.JLabel();
+        attendence_id = new javax.swing.JTextField();
+        jLabel53 = new javax.swing.JLabel();
+        attendence_present = new javax.swing.JComboBox<>();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jLabel54 = new javax.swing.JLabel();
+        save_attendence = new javax.swing.JButton();
+        update_attendence = new javax.swing.JButton();
+        jLabel55 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
+        jLabel56 = new javax.swing.JLabel();
+        attendence_search_box_id = new javax.swing.JTextField();
+        jLabel57 = new javax.swing.JLabel();
+        days_present = new javax.swing.JTextField();
+        jLabel58 = new javax.swing.JLabel();
+        days_absent = new javax.swing.JTextField();
+        jLabel59 = new javax.swing.JLabel();
+        attendence_percentage = new javax.swing.JTextField();
         courses = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
@@ -245,8 +317,10 @@ public class MainMenu extends javax.swing.JFrame {
 
         jSplitPane1.setDividerLocation(350);
         jSplitPane1.setDividerSize(1);
+        jSplitPane1.setPreferredSize(new java.awt.Dimension(1141, 900));
 
         jPanel2.setBackground(new java.awt.Color(0, 77, 136));
+        jPanel2.setMaximumSize(new java.awt.Dimension(32767, 900));
         jPanel2.setLayout(null);
 
         admin_button.setBackground(new java.awt.Color(255, 255, 255));
@@ -355,13 +429,17 @@ public class MainMenu extends javax.swing.JFrame {
         jLabel51.setIcon(new javax.swing.ImageIcon(getClass().getResource("/WallX_150440_1080x1920.jpeg"))); // NOI18N
         jLabel51.setText("jLabel51");
         jPanel2.add(jLabel51);
-        jLabel51.setBounds(0, -6, 350, 1010);
+        jLabel51.setBounds(0, -6, 350, 1190);
 
         jSplitPane1.setLeftComponent(jPanel2);
 
+        option_panels.setMaximumSize(new java.awt.Dimension(2147483647, 900));
+        option_panels.setPreferredSize(new java.awt.Dimension(1138, 900));
         option_panels.setLayout(new java.awt.CardLayout());
 
         student_info.setBackground(new java.awt.Color(255, 255, 255));
+        student_info.setMaximumSize(new java.awt.Dimension(32767, 900));
+        student_info.setPreferredSize(new java.awt.Dimension(1138, 900));
 
         jLabel14.setBackground(new java.awt.Color(255, 255, 255));
         jLabel14.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -639,12 +717,14 @@ public class MainMenu extends javax.swing.JFrame {
                     .addComponent(jScrollPane1))
                 .addGap(34, 34, 34)
                 .addComponent(student_info_save_button, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         option_panels.add(student_info, "student_card");
 
         admin_info.setBackground(new java.awt.Color(255, 255, 255));
+        admin_info.setMaximumSize(new java.awt.Dimension(32767, 900));
+        admin_info.setPreferredSize(new java.awt.Dimension(1113, 900));
 
         jLabel35.setBackground(new java.awt.Color(255, 255, 255));
         jLabel35.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -860,6 +940,8 @@ public class MainMenu extends javax.swing.JFrame {
         option_panels.add(admin_info, "admin_card");
 
         results.setBackground(new java.awt.Color(102, 255, 102));
+        results.setMaximumSize(new java.awt.Dimension(32767, 900));
+        results.setPreferredSize(new java.awt.Dimension(1138, 900));
 
         javax.swing.GroupLayout resultsLayout = new javax.swing.GroupLayout(results);
         results.setLayout(resultsLayout);
@@ -875,6 +957,8 @@ public class MainMenu extends javax.swing.JFrame {
         option_panels.add(results, "results_card");
 
         about.setBackground(new java.awt.Color(255, 255, 255));
+        about.setMaximumSize(new java.awt.Dimension(32767, 900));
+        about.setPreferredSize(new java.awt.Dimension(1138, 900));
 
         jLabel4.setBackground(new java.awt.Color(0, 0, 0));
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 46)); // NOI18N
@@ -965,22 +1049,232 @@ public class MainMenu extends javax.swing.JFrame {
 
         option_panels.add(about, "about_card");
 
-        attendence.setBackground(new java.awt.Color(255, 255, 102));
+        attendence.setBackground(new java.awt.Color(255, 255, 255));
+        attendence.setMaximumSize(new java.awt.Dimension(32767, 900));
+        attendence.setPreferredSize(new java.awt.Dimension(1138, 900));
+
+        jLabel52.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel52.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel52.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel52.setText("ID");
+
+        attendence_id.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        attendence_id.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                attendence_idActionPerformed(evt);
+            }
+        });
+
+        jLabel53.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel53.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel53.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel53.setText("Present");
+
+        attendence_present.setEditable(true);
+        attendence_present.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        attendence_present.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Present", "Absent" }));
+        attendence_present.setBorder(null);
+        attendence_present.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                attendence_presentActionPerformed(evt);
+            }
+        });
+
+        jDateChooser1.setDateFormatString("dd/MM/yyyy");
+
+        jLabel54.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel54.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel54.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel54.setText("Date");
+
+        save_attendence.setBackground(new java.awt.Color(0, 0, 0));
+        save_attendence.setForeground(new java.awt.Color(255, 255, 255));
+        save_attendence.setText("Save");
+        save_attendence.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                save_attendenceActionPerformed(evt);
+            }
+        });
+
+        update_attendence.setBackground(new java.awt.Color(0, 0, 0));
+        update_attendence.setForeground(new java.awt.Color(255, 255, 255));
+        update_attendence.setText("Update");
+        update_attendence.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                update_attendenceActionPerformed(evt);
+            }
+        });
+
+        jLabel55.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabel55.setText("Attendence");
+
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Date", "ID", "P/A"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(jTable2);
+
+        jLabel56.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel56.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel56.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel56.setText("Search ID");
+
+        attendence_search_box_id.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        attendence_search_box_id.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                attendence_search_box_idActionPerformed(evt);
+            }
+        });
+        attendence_search_box_id.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                attendence_search_box_idKeyReleased(evt);
+            }
+        });
+
+        jLabel57.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel57.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel57.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel57.setText("No of Days Present");
+
+        days_present.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        days_present.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                days_presentActionPerformed(evt);
+            }
+        });
+
+        jLabel58.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel58.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel58.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel58.setText("No of Days Absent");
+
+        days_absent.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        days_absent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                days_absentActionPerformed(evt);
+            }
+        });
+
+        jLabel59.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel59.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel59.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel59.setText("Percentage%");
+
+        attendence_percentage.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        attendence_percentage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                attendence_percentageActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout attendenceLayout = new javax.swing.GroupLayout(attendence);
         attendence.setLayout(attendenceLayout);
         attendenceLayout.setHorizontalGroup(
             attendenceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1138, Short.MAX_VALUE)
+            .addGroup(attendenceLayout.createSequentialGroup()
+                .addGroup(attendenceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(attendenceLayout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addGroup(attendenceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(attendenceLayout.createSequentialGroup()
+                                .addGroup(attendenceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(attendenceLayout.createSequentialGroup()
+                                        .addComponent(update_attendence, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                                        .addComponent(save_attendence, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(attendenceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel54)
+                                        .addGroup(attendenceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(attendence_present, 0, 304, Short.MAX_VALUE)
+                                            .addComponent(jLabel53)
+                                            .addComponent(attendence_id, javax.swing.GroupLayout.DEFAULT_SIZE, 304, Short.MAX_VALUE)
+                                            .addComponent(jLabel52)
+                                            .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(attendenceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(attendence_search_box_id, javax.swing.GroupLayout.DEFAULT_SIZE, 304, Short.MAX_VALUE)
+                                    .addComponent(jLabel56)
+                                    .addComponent(days_present, javax.swing.GroupLayout.DEFAULT_SIZE, 304, Short.MAX_VALUE)
+                                    .addComponent(jLabel57)
+                                    .addComponent(days_absent, javax.swing.GroupLayout.DEFAULT_SIZE, 304, Short.MAX_VALUE)
+                                    .addComponent(jLabel58)
+                                    .addComponent(attendence_percentage, javax.swing.GroupLayout.DEFAULT_SIZE, 304, Short.MAX_VALUE)
+                                    .addComponent(jLabel59)))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1033, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(attendenceLayout.createSequentialGroup()
+                        .addGap(466, 466, 466)
+                        .addComponent(jLabel55)))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
         attendenceLayout.setVerticalGroup(
             attendenceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 998, Short.MAX_VALUE)
+            .addGroup(attendenceLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(jLabel55)
+                .addGroup(attendenceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(attendenceLayout.createSequentialGroup()
+                        .addGroup(attendenceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(attendenceLayout.createSequentialGroup()
+                                .addGap(31, 31, 31)
+                                .addGroup(attendenceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(attendenceLayout.createSequentialGroup()
+                                        .addComponent(jLabel52)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(attendence_id, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(attendenceLayout.createSequentialGroup()
+                                        .addComponent(jLabel56)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(attendence_search_box_id, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel53)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(attendence_present, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(attendenceLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel57)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(days_present, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(attendenceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(attendenceLayout.createSequentialGroup()
+                                .addComponent(jLabel54)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(attendenceLayout.createSequentialGroup()
+                                .addComponent(jLabel58)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(days_absent, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addGroup(attendenceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(save_attendence, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
+                            .addComponent(update_attendence, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(attendenceLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel59)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(attendence_percentage, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(83, 83, 83)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(323, 323, 323))
         );
 
         option_panels.add(attendence, "attendence_card");
 
         courses.setBackground(new java.awt.Color(255, 255, 255));
+        courses.setMaximumSize(new java.awt.Dimension(32767, 900));
+        courses.setPreferredSize(new java.awt.Dimension(1138, 900));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel9.setText("Courses");
@@ -1392,7 +1686,7 @@ public class MainMenu extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1000, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -1534,7 +1828,6 @@ public class MainMenu extends javax.swing.JFrame {
                 session_student.setText(s9);
                 blood_group_student.setText(s10);
 
-
             }
             //Create Exception Handler  
         } catch (Exception ex) {
@@ -1671,75 +1964,71 @@ public class MainMenu extends javax.swing.JFrame {
                 Connection con1 = DriverManager.getConnection("jdbc:mysql://localhost/student_info_sys", "root", "");
                 PreparedStatement st1 = con1.prepareStatement("select * from subject1 where id=? ");
                 st1.setString(1, str);
-                
+
                 ResultSet rs1 = st1.executeQuery();
-                if(rs1.next()){
+                if (rs1.next()) {
                     String credit = rs1.getString("credit");
                     String obtained_gpa = rs1.getString("obtained_gpa");
-                    
+
                     subject_credit1.setText(credit);
                     subject_obtained_gpa1.setText(obtained_gpa);
                 }
-                
-                 Class.forName("com.mysql.jdbc.Driver");
+
+                Class.forName("com.mysql.jdbc.Driver");
                 Connection con2 = DriverManager.getConnection("jdbc:mysql://localhost/student_info_sys", "root", "");
                 PreparedStatement st2 = con2.prepareStatement("select * from subject2 where id=? ");
                 st2.setString(1, str);
-                
+
                 ResultSet rs2 = st2.executeQuery();
-                if(rs2.next()){
+                if (rs2.next()) {
                     String credit = rs2.getString("credit");
                     String obtained_gpa = rs2.getString("obtained_gpa");
-                    
+
                     subject_credit2.setText(credit);
                     subject_obtained_gpa2.setText(obtained_gpa);
                 }
-                
-                
-                 Class.forName("com.mysql.jdbc.Driver");
+
+                Class.forName("com.mysql.jdbc.Driver");
                 Connection con3 = DriverManager.getConnection("jdbc:mysql://localhost/student_info_sys", "root", "");
                 PreparedStatement st3 = con3.prepareStatement("select * from subject3 where id=? ");
                 st3.setString(1, str);
-                
+
                 ResultSet rs3 = st3.executeQuery();
-                if(rs3.next()){
+                if (rs3.next()) {
                     String credit = rs3.getString("credit");
                     String obtained_gpa = rs3.getString("obtained_gpa");
-                    
+
                     subject_credit3.setText(credit);
                     subject_obtained_gpa3.setText(obtained_gpa);
                 }
-                
-                 Class.forName("com.mysql.jdbc.Driver");
+
+                Class.forName("com.mysql.jdbc.Driver");
                 Connection con4 = DriverManager.getConnection("jdbc:mysql://localhost/student_info_sys", "root", "");
                 PreparedStatement st4 = con4.prepareStatement("select * from subject4 where id=? ");
                 st4.setString(1, str);
-                
+
                 ResultSet rs4 = st4.executeQuery();
-                if(rs4.next()){
+                if (rs4.next()) {
                     String credit = rs4.getString("credit");
                     String obtained_gpa = rs4.getString("obtained_gpa");
-                    
+
                     subject_credit4.setText(credit);
                     subject_obtained_gpa4.setText(obtained_gpa);
                 }
-                
-                
-                 Class.forName("com.mysql.jdbc.Driver");
+
+                Class.forName("com.mysql.jdbc.Driver");
                 Connection con5 = DriverManager.getConnection("jdbc:mysql://localhost/student_info_sys", "root", "");
                 PreparedStatement st5 = con5.prepareStatement("select * from subject5 where id=? ");
                 st5.setString(1, str);
-                
+
                 ResultSet rs5 = st5.executeQuery();
-                if(rs5.next()){
+                if (rs5.next()) {
                     String credit = rs5.getString("credit");
                     String obtained_gpa = rs5.getString("obtained_gpa");
-                    
+
                     subject_credit5.setText(credit);
                     subject_obtained_gpa5.setText(obtained_gpa);
                 }
-                
-                
 
             }
             //Create Exception Handler  
@@ -1943,7 +2232,7 @@ public class MainMenu extends javax.swing.JFrame {
                 String str = student_id_course.getText();
                 String credit = subject_credit1.getText();
                 String obtained_gpa = subject_obtained_gpa1.getText();
-                
+
                 Class.forName("com.mysql.jdbc.Driver");
 
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost/student_info_sys", "root", "");
@@ -1953,12 +2242,11 @@ public class MainMenu extends javax.swing.JFrame {
                 pst.setString(2, obtained_gpa);
                 pst.setString(3, str);
                 pst.executeUpdate();
-                
-                
+
                 String str2 = student_id_course.getText();
                 String credit2 = subject_credit2.getText();
                 String obtained_gpa2 = subject_obtained_gpa2.getText();
-                
+
                 Class.forName("com.mysql.jdbc.Driver");
 
                 Connection con2 = DriverManager.getConnection("jdbc:mysql://localhost/student_info_sys", "root", "");
@@ -1968,12 +2256,11 @@ public class MainMenu extends javax.swing.JFrame {
                 pst2.setString(2, obtained_gpa2);
                 pst2.setString(3, str2);
                 pst2.executeUpdate();
-                
-                
+
                 String str3 = student_id_course.getText();
                 String credit3 = subject_credit3.getText();
                 String obtained_gpa3 = subject_obtained_gpa3.getText();
-                
+
                 Class.forName("com.mysql.jdbc.Driver");
 
                 Connection con3 = DriverManager.getConnection("jdbc:mysql://localhost/student_info_sys", "root", "");
@@ -1983,13 +2270,11 @@ public class MainMenu extends javax.swing.JFrame {
                 pst3.setString(2, obtained_gpa3);
                 pst3.setString(3, str3);
                 pst3.executeUpdate();
-                
-                
-                
+
                 String str4 = student_id_course.getText();
                 String credit4 = subject_credit4.getText();
                 String obtained_gpa4 = subject_obtained_gpa4.getText();
-                
+
                 Class.forName("com.mysql.jdbc.Driver");
 
                 Connection con4 = DriverManager.getConnection("jdbc:mysql://localhost/student_info_sys", "root", "");
@@ -1999,11 +2284,11 @@ public class MainMenu extends javax.swing.JFrame {
                 pst4.setString(2, obtained_gpa4);
                 pst4.setString(3, str4);
                 pst4.executeUpdate();
-                
+
                 String str5 = student_id_course.getText();
                 String credit5 = subject_credit5.getText();
                 String obtained_gpa5 = subject_obtained_gpa5.getText();
-                
+
                 Class.forName("com.mysql.jdbc.Driver");
 
                 Connection con5 = DriverManager.getConnection("jdbc:mysql://localhost/student_info_sys", "root", "");
@@ -2013,9 +2298,8 @@ public class MainMenu extends javax.swing.JFrame {
                 pst5.setString(2, obtained_gpa5);
                 pst5.setString(3, str5);
                 pst5.executeUpdate();
-                
+
                 JOptionPane.showMessageDialog(null, "Data Saved");
-                
 
                 //JOptionPane.showMessageDialog(this, "Record added");
             } catch (ClassNotFoundException ex) {
@@ -2033,6 +2317,143 @@ public class MainMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
         cardlayout.show(option_panels, "results_card");
     }//GEN-LAST:event_results_buttonActionPerformed
+
+    private void attendence_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_attendence_idActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_attendence_idActionPerformed
+
+    private void attendence_presentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_attendence_presentActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_attendence_presentActionPerformed
+
+    private void save_attendenceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save_attendenceActionPerformed
+        // TODO add your handling code here:
+
+        //getting the date in the simple date format
+        SimpleDateFormat dcn = new SimpleDateFormat("dd/MM/yyyy");
+        String date = dcn.format(jDateChooser1.getDate());
+
+        String id = attendence_id.getText();
+        String present = attendence_present.getSelectedItem().toString();
+
+        //passing the date to the save attendence class for saving 
+        save_attendence obj = new save_attendence(id, present, date);
+
+        try {
+            obj.save();
+        } catch (SQLException ex) {
+            Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        //this piece of code is used for refreshing
+        DefaultTableModel tableModel = (DefaultTableModel) jTable2.getModel();
+        tableModel.setRowCount(0);
+
+        show_student_attendence();
+        //String date = jDateChooser1.getDate().toString();
+        //JOptionPane.showMessageDialog(null, date);
+
+    }//GEN-LAST:event_save_attendenceActionPerformed
+
+    private void update_attendenceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_update_attendenceActionPerformed
+        // TODO add your handling code here:
+        //this piece of code is for updating if the user is present or absent
+
+        //getting the date in the simple date format
+        SimpleDateFormat dcn = new SimpleDateFormat("dd/MM/yyyy");
+        String date = dcn.format(jDateChooser1.getDate());
+
+        String id = attendence_id.getText();
+        String present = attendence_present.getSelectedItem().toString();
+
+        update_attendence obj = new update_attendence(id, present, date);
+
+        try {
+            obj.update();
+        } catch (SQLException ex) {
+            Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        //this piece of code is used for refreshing
+        DefaultTableModel tableModel = (DefaultTableModel) jTable2.getModel();
+        tableModel.setRowCount(0);
+
+        show_student_attendence();
+
+    }//GEN-LAST:event_update_attendenceActionPerformed
+
+    private void attendence_search_box_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_attendence_search_box_idActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_attendence_search_box_idActionPerformed
+
+    private void days_presentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_days_presentActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_days_presentActionPerformed
+
+    private void days_absentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_days_absentActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_days_absentActionPerformed
+
+    private void attendence_search_box_idKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_attendence_search_box_idKeyReleased
+        // TODO add your handling code here:
+        String search = attendence_search_box_id.getText();
+
+        //for searching data in the table
+        DefaultTableModel table = (DefaultTableModel) jTable2.getModel();
+
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<>(table);
+        jTable2.setRowSorter(tr);
+        tr.setRowFilter(RowFilter.regexFilter(search));
+
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/student_info_sys", "root", "");
+            PreparedStatement st = con.prepareStatement("select * from attendence where id=? ");
+            st.setString(1, search);
+
+            //Excuting Query  
+            ResultSet rs = st.executeQuery();
+            //System.out.println(rs.toString());
+            
+            //an int for counting elements in result set
+            int total_day = 0 ;
+            int abs_day = 0 ;
+            
+            if (!rs.isBeforeFirst()) {
+                System.out.println("No data");
+                total_day = 0 ;
+                abs_day = 0 ;
+            }else{
+                System.out.println("Data");
+                while(rs.next()){
+                    total_day++;
+                    String s = rs.getString("present");
+                    if(s.equals("Absent"))
+                        abs_day++;
+                }
+//                System.out.println(total_day);
+//                System.out.println(abs_day);
+                
+                days_present.setText(String.valueOf(total_day-abs_day));
+                days_absent.setText(String.valueOf(abs_day));
+                
+                double ans = (total_day-abs_day);
+                double per = ans /total_day;
+                //System.out.println(per);
+                per = per*100 ;
+                attendence_percentage.setText(String.valueOf(per));
+                
+            }
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_attendence_search_box_idKeyReleased
+
+    private void attendence_percentageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_attendence_percentageActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_attendence_percentageActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2084,10 +2505,16 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JPanel admin_info;
     private javax.swing.JPanel attendence;
     private javax.swing.JButton attendence_button;
+    private javax.swing.JTextField attendence_id;
+    private javax.swing.JTextField attendence_percentage;
+    private javax.swing.JComboBox<String> attendence_present;
+    private javax.swing.JTextField attendence_search_box_id;
     private javax.swing.JTextField batch_student;
     private javax.swing.JTextField blood_group_student;
     private javax.swing.JButton course_button;
     private javax.swing.JPanel courses;
+    private javax.swing.JTextField days_absent;
+    private javax.swing.JTextField days_present;
     private javax.swing.JTextField department_admin;
     private javax.swing.JTextField department_student;
     private javax.swing.JTextField email_admin;
@@ -2095,6 +2522,7 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JButton enroll_button;
     private javax.swing.JTextField id_admin;
     private javax.swing.JTextField id_student;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -2142,6 +2570,14 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel51;
+    private javax.swing.JLabel jLabel52;
+    private javax.swing.JLabel jLabel53;
+    private javax.swing.JLabel jLabel54;
+    private javax.swing.JLabel jLabel55;
+    private javax.swing.JLabel jLabel56;
+    private javax.swing.JLabel jLabel57;
+    private javax.swing.JLabel jLabel58;
+    private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -2151,8 +2587,10 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
     private javax.swing.JTextField occupation_admin;
     private javax.swing.JPanel option_panels;
     private javax.swing.JTextField password_admin;
@@ -2161,6 +2599,7 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JTextField phone_number_student;
     private javax.swing.JPanel results;
     private javax.swing.JButton results_button;
+    private javax.swing.JButton save_attendence;
     private javax.swing.JButton save_button_for_credit;
     private javax.swing.JTextField search_bar;
     private javax.swing.JTextField search_bar_admin;
@@ -2180,6 +2619,7 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JTextField subject_obtained_gpa3;
     private javax.swing.JTextField subject_obtained_gpa4;
     private javax.swing.JTextField subject_obtained_gpa5;
+    private javax.swing.JButton update_attendence;
     private javax.swing.JTextField username_admin;
     private javax.swing.JTextField username_student;
     // End of variables declaration//GEN-END:variables
