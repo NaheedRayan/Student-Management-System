@@ -60,8 +60,6 @@ public class SignUpForm extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        admin_button = new javax.swing.JButton();
-        student_button = new javax.swing.JButton();
         jLabel29 = new javax.swing.JLabel();
         dual_panel = new javax.swing.JPanel();
         admin_panel = new javax.swing.JPanel();
@@ -91,37 +89,6 @@ public class SignUpForm extends javax.swing.JFrame {
         jLabelPic1 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
         jButtonBrowse_admin = new javax.swing.JButton();
-        student_panel = new javax.swing.JPanel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        username_student = new javax.swing.JTextField();
-        jLabel15 = new javax.swing.JLabel();
-        email_student = new javax.swing.JTextField();
-        jLabel16 = new javax.swing.JLabel();
-        address_student = new javax.swing.JTextField();
-        jLabel17 = new javax.swing.JLabel();
-        phone_number_student = new javax.swing.JTextField();
-        jLabel18 = new javax.swing.JLabel();
-        id_student = new javax.swing.JTextField();
-        jLabel19 = new javax.swing.JLabel();
-        password_student = new javax.swing.JPasswordField();
-        jCheckBox3 = new javax.swing.JCheckBox();
-        jLabel20 = new javax.swing.JLabel();
-        re_password_student = new javax.swing.JPasswordField();
-        jCheckBox4 = new javax.swing.JCheckBox();
-        signup_button = new javax.swing.JButton();
-        department_student = new javax.swing.JComboBox<>();
-        jLabel21 = new javax.swing.JLabel();
-        batch_student = new javax.swing.JComboBox<>();
-        jLabel22 = new javax.swing.JLabel();
-        session_student = new javax.swing.JComboBox<>();
-        jLabel23 = new javax.swing.JLabel();
-        jLabel24 = new javax.swing.JLabel();
-        blood_group_student = new javax.swing.JComboBox<>();
-        jLabel27 = new javax.swing.JLabel();
-        jLabelPic = new javax.swing.JLabel();
-        jButtonBrowse = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1100, 800));
@@ -149,35 +116,6 @@ public class SignUpForm extends javax.swing.JFrame {
         jLabel1.setText("Student Management System ");
         jPanel2.add(jLabel1);
         jLabel1.setBounds(82, 100, 172, 14);
-
-        admin_button.setBackground(new java.awt.Color(255, 255, 255));
-        admin_button.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        admin_button.setForeground(new java.awt.Color(102, 102, 102));
-        admin_button.setText("Admin");
-        admin_button.setBorder(null);
-        admin_button.setBorderPainted(false);
-        admin_button.setOpaque(false);
-        admin_button.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                admin_buttonActionPerformed(evt);
-            }
-        });
-        jPanel2.add(admin_button);
-        admin_button.setBounds(44, 346, 266, 49);
-
-        student_button.setBackground(new java.awt.Color(255, 255, 255));
-        student_button.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        student_button.setForeground(new java.awt.Color(102, 102, 102));
-        student_button.setText("Student");
-        student_button.setBorder(null);
-        student_button.setBorderPainted(false);
-        student_button.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                student_buttonActionPerformed(evt);
-            }
-        });
-        jPanel2.add(student_button);
-        student_button.setBounds(44, 425, 266, 49);
 
         jLabel29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/WallX_150440_1080x1920.jpeg"))); // NOI18N
         jLabel29.setText("jLabel29");
@@ -367,7 +305,7 @@ public class SignUpForm extends javax.swing.JFrame {
                 .addGap(36, 36, 36)
                 .addGroup(admin_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(admin_panelLayout.createSequentialGroup()
-                        .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 752, Short.MAX_VALUE)
+                        .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(admin_panelLayout.createSequentialGroup()
                         .addGroup(admin_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -392,13 +330,13 @@ public class SignUpForm extends javax.swing.JFrame {
                                 .addComponent(jLabel10)
                                 .addComponent(admin_id, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel11)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
                         .addGroup(admin_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, admin_panelLayout.createSequentialGroup()
                                 .addGroup(admin_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(admin_department, 0, 304, Short.MAX_VALUE)
                                     .addComponent(jLabel25)
-                                    .addComponent(admin_occupation, 0, 304, Short.MAX_VALUE)
+                                    .addComponent(admin_occupation, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel26))
                                 .addGap(102, 102, 102))
                             .addGroup(admin_panelLayout.createSequentialGroup()
@@ -476,330 +414,6 @@ public class SignUpForm extends javax.swing.JFrame {
         );
 
         dual_panel.add(admin_panel, "admin_card");
-
-        student_panel.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-        jLabel12.setText("SignUp (student)");
-
-        jLabel13.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel13.setText("Enter your signup details below");
-
-        jLabel14.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel14.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel14.setText("Username");
-
-        username_student.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        username_student.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                username_studentActionPerformed(evt);
-            }
-        });
-
-        jLabel15.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel15.setText("email");
-
-        email_student.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        email_student.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                email_studentActionPerformed(evt);
-            }
-        });
-
-        jLabel16.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel16.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel16.setText("Address");
-
-        address_student.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        address_student.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                address_studentActionPerformed(evt);
-            }
-        });
-
-        jLabel17.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel17.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel17.setText("Phone Number");
-
-        phone_number_student.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        phone_number_student.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                phone_number_studentActionPerformed(evt);
-            }
-        });
-
-        jLabel18.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel18.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel18.setText("ID");
-
-        id_student.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        id_student.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                id_studentActionPerformed(evt);
-            }
-        });
-
-        jLabel19.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel19.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel19.setText("Password");
-
-        password_student.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        password_student.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                password_studentActionPerformed(evt);
-            }
-        });
-
-        jCheckBox3.setForeground(new java.awt.Color(153, 153, 153));
-        jCheckBox3.setText("Show password");
-        jCheckBox3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox3ActionPerformed(evt);
-            }
-        });
-
-        jLabel20.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel20.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel20.setText("Re - Password");
-
-        re_password_student.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        re_password_student.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                re_password_studentActionPerformed(evt);
-            }
-        });
-
-        jCheckBox4.setForeground(new java.awt.Color(153, 153, 153));
-        jCheckBox4.setText("Show password");
-        jCheckBox4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox4ActionPerformed(evt);
-            }
-        });
-
-        signup_button.setBackground(new java.awt.Color(0, 0, 0));
-        signup_button.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        signup_button.setForeground(new java.awt.Color(255, 255, 255));
-        signup_button.setText("SIGN UP");
-        signup_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        signup_button.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                signup_buttonActionPerformed(evt);
-            }
-        });
-
-        department_student.setEditable(true);
-        department_student.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        department_student.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Dept of Computer Science and Engineering", "Dept of Mathematics", "Dept of Physics", "Dept of Islamic Studies", "Dept of Finance" }));
-        department_student.setBorder(null);
-        department_student.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                department_studentActionPerformed(evt);
-            }
-        });
-
-        jLabel21.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel21.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel21.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel21.setText("Department");
-
-        batch_student.setEditable(true);
-        batch_student.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        batch_student.setMaximumRowCount(100);
-        batch_student.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", " " }));
-        batch_student.setBorder(null);
-        batch_student.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                batch_studentActionPerformed(evt);
-            }
-        });
-
-        jLabel22.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel22.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel22.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel22.setText("Batch(University)");
-
-        session_student.setEditable(true);
-        session_student.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        session_student.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2018-19", "2019-20", "2020-21", "2021-22", "2022-23", " " }));
-        session_student.setBorder(null);
-        session_student.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                session_studentActionPerformed(evt);
-            }
-        });
-
-        jLabel23.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel23.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel23.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel23.setText("Session");
-
-        jLabel24.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel24.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel24.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel24.setText("Blood Group");
-
-        blood_group_student.setEditable(true);
-        blood_group_student.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        blood_group_student.setMaximumRowCount(15);
-        blood_group_student.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "O positive", "O negative", "A positive", "A negative", "B positive", "B negative", "AB positive", "AB negative", "other" }));
-        blood_group_student.setBorder(null);
-        blood_group_student.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                blood_group_studentActionPerformed(evt);
-            }
-        });
-
-        jLabel27.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel27.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel27.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel27.setText("Picture");
-
-        jLabelPic.setBackground(new java.awt.Color(204, 204, 204));
-        jLabelPic.setOpaque(true);
-
-        jButtonBrowse.setBackground(new java.awt.Color(0, 0, 0));
-        jButtonBrowse.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButtonBrowse.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonBrowse.setText("Browse");
-        jButtonBrowse.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButtonBrowse.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonBrowseActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout student_panelLayout = new javax.swing.GroupLayout(student_panel);
-        student_panel.setLayout(student_panelLayout);
-        student_panelLayout.setHorizontalGroup(
-            student_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, student_panelLayout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addGroup(student_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 752, Short.MAX_VALUE)
-                    .addGroup(student_panelLayout.createSequentialGroup()
-                        .addGroup(student_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jCheckBox3)
-                            .addGroup(student_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(password_student, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel19)
-                                .addComponent(username_student, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel14)
-                                .addComponent(jLabel13)
-                                .addComponent(email_student, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel15)
-                                .addComponent(address_student, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel16)
-                                .addComponent(phone_number_student, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel17)
-                                .addComponent(id_student, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel18))
-                            .addComponent(jCheckBox4)
-                            .addGroup(student_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(re_password_student, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel20)
-                                .addComponent(signup_button, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(46, 46, 46)
-                        .addGroup(student_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(student_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(department_student, 0, 304, Short.MAX_VALUE)
-                                .addComponent(jLabel21)
-                                .addComponent(batch_student, 0, 304, Short.MAX_VALUE)
-                                .addComponent(jLabel22)
-                                .addComponent(session_student, 0, 304, Short.MAX_VALUE)
-                                .addComponent(jLabel23)
-                                .addComponent(blood_group_student, 0, 304, Short.MAX_VALUE)
-                                .addComponent(jLabel24)
-                                .addComponent(jLabel27)
-                                .addComponent(jLabelPic, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jButtonBrowse, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        student_panelLayout.setVerticalGroup(
-            student_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(student_panelLayout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addComponent(jLabel12)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel13)
-                .addGap(18, 18, 18)
-                .addGroup(student_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel14)
-                    .addComponent(jLabel21))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(student_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(department_student)
-                    .addComponent(username_student, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(student_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(student_panelLayout.createSequentialGroup()
-                        .addComponent(jLabel15)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(email_student, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(student_panelLayout.createSequentialGroup()
-                        .addComponent(jLabel22)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(batch_student)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(student_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(student_panelLayout.createSequentialGroup()
-                        .addComponent(jLabel16)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(address_student, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(student_panelLayout.createSequentialGroup()
-                        .addComponent(jLabel23)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(session_student)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(student_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(student_panelLayout.createSequentialGroup()
-                        .addComponent(jLabel17)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(phone_number_student, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(student_panelLayout.createSequentialGroup()
-                        .addComponent(jLabel24)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(blood_group_student)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(student_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel18)
-                    .addComponent(jLabel27))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(student_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(student_panelLayout.createSequentialGroup()
-                        .addComponent(id_student, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel19)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(password_student, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jCheckBox3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel20)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(re_password_student, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabelPic, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(15, 15, 15)
-                .addGroup(student_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonBrowse)
-                    .addComponent(jCheckBox4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
-                .addComponent(signup_button, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52))
-        );
-
-        dual_panel.add(student_panel, "student_card");
 
         jSplitPane1.setRightComponent(dual_panel);
 
@@ -945,179 +559,6 @@ public class SignUpForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_admin_idActionPerformed
 
-    private void username_studentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_username_studentActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_username_studentActionPerformed
-
-    private void email_studentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_email_studentActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_email_studentActionPerformed
-
-    private void address_studentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_address_studentActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_address_studentActionPerformed
-
-    private void phone_number_studentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_phone_number_studentActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_phone_number_studentActionPerformed
-
-    private void id_studentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_id_studentActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_id_studentActionPerformed
-
-    private void password_studentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_password_studentActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_password_studentActionPerformed
-
-    private void jCheckBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox3ActionPerformed
-        // TODO add your handling code here:
-        // TO show the pass word
-        if (jCheckBox3.isSelected()) {
-            password_student.setEchoChar((char) 0);
-        } else {
-            password_student.setEchoChar('*');
-        }
-    }//GEN-LAST:event_jCheckBox3ActionPerformed
-
-    private void re_password_studentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_re_password_studentActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_re_password_studentActionPerformed
-
-    private void jCheckBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox4ActionPerformed
-        // TODO add your handling code here:
-        // TO show the pass word
-        if (jCheckBox4.isSelected()) {
-            re_password_student.setEchoChar((char) 0);
-        } else {
-            re_password_student.setEchoChar('*');
-        }
-    }//GEN-LAST:event_jCheckBox4ActionPerformed
-
-    private void signup_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signup_buttonActionPerformed
-        // TODO add your handling code here:
-        //if the sign up is clicked
-        if (username_student.getText().length() == 0) {
-            JOptionPane.showMessageDialog(null, "Please enter the username");
-        } else if (email_student.getText().length() == 0) {
-            JOptionPane.showMessageDialog(null, "Please enter the mail");
-        } else if (address_student.getText().length() == 0) {
-            JOptionPane.showMessageDialog(null, "Please the address");
-        } else if (phone_number_student.getText().length() == 0) {
-            JOptionPane.showMessageDialog(null, "Please the phone number");
-        } else if (id_student.getText().length() == 0) {
-            JOptionPane.showMessageDialog(null, "Please the ID");
-        } else if (password_student.getText().equals(re_password_student.getText()) == false) {
-            JOptionPane.showMessageDialog(null, "Password not matched");
-        } else if (imagePth == null) {
-            JOptionPane.showMessageDialog(null, "Please insert an Image");
-        } else {
-            try {
-
-                String username = username_student.getText();
-                String email = email_student.getText();
-                String address = address_student.getText();
-                String phone_number = phone_number_student.getText();
-                String id = id_student.getText();
-                String password = password_student.getText();
-
-                String department = department_student.getSelectedItem().toString();
-                String batch = batch_student.getSelectedItem().toString();
-                String session = session_student.getSelectedItem().toString();
-                String blood_group = blood_group_student.getSelectedItem().toString();
-
-                Class.forName("com.mysql.jdbc.Driver");
-                con = DriverManager.getConnection("jdbc:mysql://localhost/student_info_sys", "root", "");
-                pst = con.prepareStatement("insert into student(username,email,address,phone_number,id,password,department,batch,session,blood_group,picture)values(?,?,?,?,?,?,?,?,?,?,?)");
-
-                pst.setString(1, username);
-                pst.setString(2, email);
-                pst.setString(3, address);
-                pst.setString(4, phone_number);
-                pst.setString(5, id);
-                pst.setString(6, password);
-                pst.setString(7, department);
-                pst.setString(8, batch);
-                pst.setString(9, session);
-                pst.setString(10, blood_group);
-
-                InputStream img = new FileInputStream(new File(imagePth));
-                pst.setBlob(11, img);
-
-                if (pst.executeUpdate() != 0) {
-                    JOptionPane.showMessageDialog(null, "Account created");
-                    MainMenu s = new MainMenu("student");
-
-                    s.setVisible(true);//showing new dialog box
-                    s.pack();//making it dynamic in size
-                    s.setLocationRelativeTo(null);//setting the location
-                    this.dispose();//for closing the loginForm
-                } else {
-                    JOptionPane.showMessageDialog(null, "Something wrong");
-                }
-
-                //this piece of code is used for entering the id in courses table as a foreign key
-                Connection con1 = DriverManager.getConnection("jdbc:mysql://localhost/student_info_sys", "root", "");
-                PreparedStatement pst1 = con1.prepareStatement("insert into courses (id) values(?)");
-                pst1.setString(1, id);
-                pst1.executeUpdate();
-
-                //this piece of code is used for entering the id in subject1 table as a foreign key
-                Connection con2 = DriverManager.getConnection("jdbc:mysql://localhost/student_info_sys", "root", "");
-                PreparedStatement pst2 = con2.prepareStatement("insert into subject1 (id) values(?)");
-                pst2.setString(1, id);
-                pst2.executeUpdate();
-
-                //this piece of code is used for entering the id in subject2 table as a foreign key
-                Connection con3 = DriverManager.getConnection("jdbc:mysql://localhost/student_info_sys", "root", "");
-                PreparedStatement pst3 = con3.prepareStatement("insert into subject2 (id) values(?)");
-                pst3.setString(1, id);
-                pst3.executeUpdate();
-
-                //this piece of code is used for entering the id in subject3 table as a foreign key
-                Connection con4 = DriverManager.getConnection("jdbc:mysql://localhost/student_info_sys", "root", "");
-                PreparedStatement pst4 = con4.prepareStatement("insert into subject3 (id) values(?)");
-                pst4.setString(1, id);
-                pst4.executeUpdate();
-
-                //this piece of code is used for entering the id in subject4 table as a foreign key
-                Connection con5 = DriverManager.getConnection("jdbc:mysql://localhost/student_info_sys", "root", "");
-                PreparedStatement pst5 = con5.prepareStatement("insert into subject4 (id) values(?)");
-                pst5.setString(1, id);
-                pst5.executeUpdate();
-
-                //this piece of code is used for entering the id in subject5 table as a foreign key
-                Connection con6 = DriverManager.getConnection("jdbc:mysql://localhost/student_info_sys", "root", "");
-                PreparedStatement pst6 = con6.prepareStatement("insert into subject5 (id) values(?)");
-                pst6.setString(1, id);
-                pst6.executeUpdate();
-
-                //JOptionPane.showMessageDialog(this, "Record added");
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(SignUpForm.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (Exception ex) {
-                Logger.getLogger(SignUpForm.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-
-
-    }//GEN-LAST:event_signup_buttonActionPerformed
-
-    private void department_studentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_department_studentActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_department_studentActionPerformed
-
-    private void batch_studentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_batch_studentActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_batch_studentActionPerformed
-
-    private void session_studentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_session_studentActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_session_studentActionPerformed
-
-    private void blood_group_studentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_blood_group_studentActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_blood_group_studentActionPerformed
-
     private void admin_departmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_admin_departmentActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_admin_departmentActionPerformed
@@ -1126,12 +567,7 @@ public class SignUpForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_admin_occupationActionPerformed
 
-    public ImageIcon resizePic(String picPath) {
-        ImageIcon myImg = new ImageIcon(picPath);
-        Image img = myImg.getImage().getScaledInstance(jLabelPic.getWidth(), jLabelPic.getHeight(), Image.SCALE_SMOOTH);
-        ImageIcon myPicture = new ImageIcon(img);
-        return myPicture;
-    }
+    
 
     public ImageIcon resizePic_admin(String picPath) {
         ImageIcon myImg = new ImageIcon(picPath);
@@ -1139,36 +575,6 @@ public class SignUpForm extends javax.swing.JFrame {
         ImageIcon myPicture = new ImageIcon(img);
         return myPicture;
     }
-    private void jButtonBrowseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBrowseActionPerformed
-        // TODO add your handling code here:
-        //When the browse button for picture is clicked
-        // for selecting image
-        JFileChooser filec = new JFileChooser();
-        filec.setCurrentDirectory(new File(System.getProperty("user.home")));
-
-        //file extension
-        FileNameExtensionFilter fileFilter = new FileNameExtensionFilter("*.Images", "jpg", "png", "gif");
-        filec.addChoosableFileFilter(fileFilter);
-
-        int fileState = filec.showSaveDialog(null);
-
-        //if the user select a file
-        if (fileState == JFileChooser.APPROVE_OPTION) {
-            File selectedFile = filec.getSelectedFile();
-            String path = selectedFile.getAbsolutePath();
-            imagePth = path;//for attaching in data base
-            //display the image in the jlabel using resizeImage
-
-            jLabelPic.setIcon(resizePic(path));
-            //jLabelPic.setIcon(new ImageIcon(path)) ;
-        } //if the user cancel 
-        else if (fileState == JFileChooser.CANCEL_OPTION) {
-            //System.out.println("NO IMAGE SELECTED");
-            JOptionPane.showMessageDialog(null, "No image selected");
-        }
-
-    }//GEN-LAST:event_jButtonBrowseActionPerformed
-
     private void jButtonBrowse_adminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBrowse_adminActionPerformed
         // TODO add your handling code here:
         //When the browse button for picture is clicked
@@ -1197,18 +603,6 @@ public class SignUpForm extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "No image selected");
         }
     }//GEN-LAST:event_jButtonBrowse_adminActionPerformed
-
-    private void student_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_student_buttonActionPerformed
-        // TODO add your handling code here:
-        //when student is clicked
-        cardlayout.show(dual_panel, "student_card");
-    }//GEN-LAST:event_student_buttonActionPerformed
-
-    private void admin_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_admin_buttonActionPerformed
-        // TODO add your handling code here:
-        //when admin is pressed
-        cardlayout.show(dual_panel, "admin_card");
-    }//GEN-LAST:event_admin_buttonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1246,9 +640,7 @@ public class SignUpForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField address_student;
     private javax.swing.JTextField admin_address;
-    private javax.swing.JButton admin_button;
     private javax.swing.JComboBox<String> admin_department;
     private javax.swing.JTextField admin_email;
     private javax.swing.JTextField admin_id;
@@ -1259,38 +651,16 @@ public class SignUpForm extends javax.swing.JFrame {
     private javax.swing.JPasswordField admin_re_password;
     private javax.swing.JButton admin_signup;
     private javax.swing.JTextField admin_username;
-    private javax.swing.JComboBox<String> batch_student;
-    private javax.swing.JComboBox<String> blood_group_student;
-    private javax.swing.JComboBox<String> department_student;
     private javax.swing.JPanel dual_panel;
-    private javax.swing.JTextField email_student;
-    private javax.swing.JTextField id_student;
-    private javax.swing.JButton jButtonBrowse;
     private javax.swing.JButton jButtonBrowse_admin;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JCheckBox jCheckBox3;
-    private javax.swing.JCheckBox jCheckBox4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
@@ -1300,18 +670,9 @@ public class SignUpForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JLabel jLabelPic;
     private javax.swing.JLabel jLabelPic1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSplitPane jSplitPane1;
-    private javax.swing.JPasswordField password_student;
-    private javax.swing.JTextField phone_number_student;
-    private javax.swing.JPasswordField re_password_student;
-    private javax.swing.JComboBox<String> session_student;
-    private javax.swing.JButton signup_button;
-    private javax.swing.JButton student_button;
-    private javax.swing.JPanel student_panel;
-    private javax.swing.JTextField username_student;
     // End of variables declaration//GEN-END:variables
 }

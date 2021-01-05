@@ -226,6 +226,7 @@ public class MainMenu extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         student_info_save_button = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         admin_info = new javax.swing.JPanel();
         jLabel35 = new javax.swing.JLabel();
         username_admin = new javax.swing.JTextField();
@@ -658,13 +659,18 @@ public class MainMenu extends javax.swing.JFrame {
         student_info_save_button.setBackground(new java.awt.Color(0, 0, 0));
         student_info_save_button.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         student_info_save_button.setForeground(new java.awt.Color(255, 255, 255));
-        student_info_save_button.setText("Save");
+        student_info_save_button.setText("Save and Update");
         student_info_save_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         student_info_save_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 student_info_save_buttonActionPerformed(evt);
             }
         });
+
+        jButton1.setBackground(new java.awt.Color(0, 0, 0));
+        jButton1.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Remove");
 
         javax.swing.GroupLayout student_infoLayout = new javax.swing.GroupLayout(student_info);
         student_info.setLayout(student_infoLayout);
@@ -705,11 +711,14 @@ public class MainMenu extends javax.swing.JFrame {
                                 .addComponent(jLabelPic, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(43, 43, 43)
                                 .addComponent(search_bar, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(student_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, student_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(student_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(student_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 729, Short.MAX_VALUE))
-                                .addComponent(student_info_save_button, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(student_infoLayout.createSequentialGroup()
+                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(75, 75, 75)
+                                    .addComponent(student_info_save_button, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(19, 19, 19))))
         );
         student_infoLayout.setVerticalGroup(
@@ -768,8 +777,10 @@ public class MainMenu extends javax.swing.JFrame {
                         .addComponent(blood_group_student, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1))
                 .addGap(34, 34, 34)
-                .addComponent(student_info_save_button, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(student_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(student_info_save_button, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
         option_panels.add(student_info, "student_card");
@@ -994,12 +1005,12 @@ public class MainMenu extends javax.swing.JFrame {
         add_student.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel60.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-        jLabel60.setText("SignUp (student)");
+        jLabel60.setText("Add Student");
 
         jLabel61.setBackground(new java.awt.Color(255, 255, 255));
         jLabel61.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel61.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel61.setText("Enter your signup details below");
+        jLabel61.setText("Enter student details below");
 
         jLabel62.setBackground(new java.awt.Color(255, 255, 255));
         jLabel62.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -1197,11 +1208,10 @@ public class MainMenu extends javax.swing.JFrame {
         add_student.setLayout(add_studentLayout);
         add_studentLayout.setHorizontalGroup(
             add_studentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, add_studentLayout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addGroup(add_studentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel60, javax.swing.GroupLayout.DEFAULT_SIZE, 1092, Short.MAX_VALUE)
+            .addGroup(add_studentLayout.createSequentialGroup()
+                .addGroup(add_studentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(add_studentLayout.createSequentialGroup()
+                        .addGap(87, 87, 87)
                         .addGroup(add_studentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jCheckBox3)
                             .addGroup(add_studentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1221,77 +1231,83 @@ public class MainMenu extends javax.swing.JFrame {
                             .addComponent(jCheckBox4)
                             .addGroup(add_studentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(re_password_student, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel68)
-                                .addComponent(student_add_button, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(46, 46, 46)
+                                .addComponent(jLabel68)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 200, Short.MAX_VALUE)
                         .addGroup(add_studentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(add_studentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(department_student1, 0, 304, Short.MAX_VALUE)
+                                .addComponent(department_student1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel69)
-                                .addComponent(batch_student1, 0, 304, Short.MAX_VALUE)
+                                .addComponent(batch_student1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel70)
-                                .addComponent(session_student1, 0, 304, Short.MAX_VALUE)
+                                .addComponent(session_student1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel71)
-                                .addComponent(blood_group_student1, 0, 304, Short.MAX_VALUE)
+                                .addComponent(blood_group_student1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel72)
                                 .addComponent(jLabel73)
-                                .addComponent(jLabelPic1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jButtonBrowse, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                                .addComponent(jLabelPic1, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jButtonBrowse, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(student_add_button, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(add_studentLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel60)
+                        .addGap(235, 235, 235)))
+                .addGap(243, 243, 243))
         );
         add_studentLayout.setVerticalGroup(
             add_studentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(add_studentLayout.createSequentialGroup()
-                .addGap(47, 47, 47)
+                .addGap(41, 41, 41)
                 .addComponent(jLabel60)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(31, 31, 31)
                 .addComponent(jLabel61)
-                .addGap(18, 18, 18)
-                .addGroup(add_studentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel62)
-                    .addComponent(jLabel69))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(add_studentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(department_student1)
-                    .addComponent(username_student1, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(add_studentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(add_studentLayout.createSequentialGroup()
-                        .addComponent(jLabel63)
+                        .addComponent(jLabel62)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(email_student1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(username_student1, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE))
+                    .addGroup(add_studentLayout.createSequentialGroup()
+                        .addComponent(jLabel69)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(department_student1)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(add_studentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(add_studentLayout.createSequentialGroup()
                         .addComponent(jLabel70)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(batch_student1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(add_studentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(add_studentLayout.createSequentialGroup()
-                        .addComponent(jLabel64)
+                        .addComponent(batch_student1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(address_student1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(add_studentLayout.createSequentialGroup()
                         .addComponent(jLabel71)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(session_student1)))
+                        .addComponent(session_student1))
+                    .addGroup(add_studentLayout.createSequentialGroup()
+                        .addComponent(jLabel63)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(email_student1, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel64)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(address_student1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(add_studentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(add_studentLayout.createSequentialGroup()
-                        .addComponent(jLabel65)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(phone_number_student1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(add_studentLayout.createSequentialGroup()
                         .addComponent(jLabel72)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(blood_group_student1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(add_studentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel66)
-                    .addComponent(jLabel73))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(add_studentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(blood_group_student1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel73)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelPic1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(15, 15, 15)
+                        .addComponent(jButtonBrowse))
                     .addGroup(add_studentLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel65)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(phone_number_student1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel66)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(id_student1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel67)
@@ -1301,16 +1317,13 @@ public class MainMenu extends javax.swing.JFrame {
                         .addComponent(jCheckBox3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel68)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(re_password_student, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabelPic1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(15, 15, 15)
-                .addGroup(add_studentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonBrowse)
-                    .addComponent(jCheckBox4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 207, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(re_password_student, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jCheckBox4)))
+                .addGap(170, 170, 170)
                 .addComponent(student_add_button, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52))
+                .addGap(88, 88, 88))
         );
 
         option_panels.add(add_student, "add_student_card");
@@ -2081,7 +2094,7 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void admin_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_admin_buttonActionPerformed
         // TODO add your handling code here:
-    cardlayout.show(option_panels, "admin_card");
+        cardlayout.show(option_panels, "admin_card");
     }//GEN-LAST:event_admin_buttonActionPerformed
 
     private void course_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_course_buttonActionPerformed
@@ -2137,6 +2150,13 @@ public class MainMenu extends javax.swing.JFrame {
     public ImageIcon resizePic(String picPath) {
         ImageIcon myImg = new ImageIcon(picPath);
         Image img = myImg.getImage().getScaledInstance(jLabelPic.getWidth(), jLabelPic.getHeight(), Image.SCALE_SMOOTH);
+        ImageIcon myPicture = new ImageIcon(img);
+        return myPicture;
+    }
+
+    public ImageIcon resizePic1(String picPath) {
+        ImageIcon myImg = new ImageIcon(picPath);
+        Image img = myImg.getImage().getScaledInstance(jLabelPic1.getWidth(), jLabelPic1.getHeight(), Image.SCALE_SMOOTH);
         ImageIcon myPicture = new ImageIcon(img);
         return myPicture;
     }
@@ -2412,57 +2432,55 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void student_info_save_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_student_info_save_buttonActionPerformed
         // TODO add your handling code here:
-        if (admin == true) {
-            try {
 
-                String str = search_bar.getText();
-                String username = username_student.getText();
-                String email = email_student.getText();
-                String address = address_student.getText();
-                String phone_number = phone_number_student.getText();
-                String password = password_student.getText();
-                String department = department_student.getText();
-                String batch = batch_student.getText();
-                String session = session_student.getText();
-                String blood_group = blood_group_student.getText();
-                String id = id_student.getText();
+        try {
 
-                Class.forName("com.mysql.jdbc.Driver");
+            String str = search_bar.getText();
+            String username = username_student.getText();
+            String email = email_student.getText();
+            String address = address_student.getText();
+            String phone_number = phone_number_student.getText();
+            String password = password_student.getText();
+            String department = department_student.getText();
+            String batch = batch_student.getText();
+            String session = session_student.getText();
+            String blood_group = blood_group_student.getText();
+            String id = id_student.getText();
 
-                Connection con = DriverManager.getConnection("jdbc:mysql://localhost/student_info_sys", "root", "");
-                PreparedStatement pst = con.prepareStatement("UPDATE student set username = ? ,email = ? ,address = ? ,phone_number= ? ,password= ? ,department= ? ,batch= ? ,session= ? ,blood_group= ?  where id = ?");
+            Class.forName("com.mysql.jdbc.Driver");
 
-                pst.setString(1, username);
-                pst.setString(2, email);
-                pst.setString(3, address);
-                pst.setString(4, phone_number);
-                pst.setString(5, password);
-                pst.setString(6, department);
-                pst.setString(7, batch);
-                pst.setString(8, session);
-                pst.setString(9, blood_group);
-                pst.setString(10, id);
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/student_info_sys", "root", "");
+            PreparedStatement pst = con.prepareStatement("UPDATE student set username = ? ,email = ? ,address = ? ,phone_number= ? ,password= ? ,department= ? ,batch= ? ,session= ? ,blood_group= ?  where id = ?");
 
-                if (pst.executeUpdate() != 0) {
-                    JOptionPane.showMessageDialog(null, "Data saved");
-                    //this piece of code is used for refreshing
-                    DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
-                    tableModel.setRowCount(0);
-                    show_user();
-                } else {
-                    JOptionPane.showMessageDialog(null, "Invalid User");
-                }
+            pst.setString(1, username);
+            pst.setString(2, email);
+            pst.setString(3, address);
+            pst.setString(4, phone_number);
+            pst.setString(5, password);
+            pst.setString(6, department);
+            pst.setString(7, batch);
+            pst.setString(8, session);
+            pst.setString(9, blood_group);
+            pst.setString(10, id);
 
-                //JOptionPane.showMessageDialog(this, "Record added");
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(SignUpForm.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (Exception ex) {
-                Logger.getLogger(SignUpForm.class.getName()).log(Level.SEVERE, null, ex);
+            if (pst.executeUpdate() != 0) {
+                JOptionPane.showMessageDialog(null, "Data saved");
+                //this piece of code is used for refreshing
+                DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
+                tableModel.setRowCount(0);
+                show_user();
+            } else {
+                JOptionPane.showMessageDialog(null, "Invalid User");
             }
 
-        } else {
-            JOptionPane.showMessageDialog(null, "Access Denied!!");
+            //JOptionPane.showMessageDialog(this, "Record added");
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(SignUpForm.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(SignUpForm.class.getName()).log(Level.SEVERE, null, ex);
         }
+
+
     }//GEN-LAST:event_student_info_save_buttonActionPerformed
 
     private void username_adminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_username_adminActionPerformed
@@ -2601,91 +2619,89 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void save_button_for_creditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save_button_for_creditActionPerformed
         // TODO add your handling code here:
-        if (admin == true) {
-            try {
 
-                String str = student_id_course.getText();
-                String credit = subject_credit1.getText();
-                String obtained_gpa = subject_obtained_gpa1.getText();
+        try {
 
-                Class.forName("com.mysql.jdbc.Driver");
+            String str = student_id_course.getText();
+            String credit = subject_credit1.getText();
+            String obtained_gpa = subject_obtained_gpa1.getText();
 
-                Connection con = DriverManager.getConnection("jdbc:mysql://localhost/student_info_sys", "root", "");
-                PreparedStatement pst = con.prepareStatement("UPDATE subject1 set credit = ? ,obtained_gpa = ? where id = ?");
+            Class.forName("com.mysql.jdbc.Driver");
 
-                pst.setString(1, credit);
-                pst.setString(2, obtained_gpa);
-                pst.setString(3, str);
-                pst.executeUpdate();
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/student_info_sys", "root", "");
+            PreparedStatement pst = con.prepareStatement("UPDATE subject1 set credit = ? ,obtained_gpa = ? where id = ?");
 
-                String str2 = student_id_course.getText();
-                String credit2 = subject_credit2.getText();
-                String obtained_gpa2 = subject_obtained_gpa2.getText();
+            pst.setString(1, credit);
+            pst.setString(2, obtained_gpa);
+            pst.setString(3, str);
+            pst.executeUpdate();
 
-                Class.forName("com.mysql.jdbc.Driver");
+            String str2 = student_id_course.getText();
+            String credit2 = subject_credit2.getText();
+            String obtained_gpa2 = subject_obtained_gpa2.getText();
 
-                Connection con2 = DriverManager.getConnection("jdbc:mysql://localhost/student_info_sys", "root", "");
-                PreparedStatement pst2 = con2.prepareStatement("UPDATE subject2 set credit = ? ,obtained_gpa = ? where id = ?");
+            Class.forName("com.mysql.jdbc.Driver");
 
-                pst2.setString(1, credit2);
-                pst2.setString(2, obtained_gpa2);
-                pst2.setString(3, str2);
-                pst2.executeUpdate();
+            Connection con2 = DriverManager.getConnection("jdbc:mysql://localhost/student_info_sys", "root", "");
+            PreparedStatement pst2 = con2.prepareStatement("UPDATE subject2 set credit = ? ,obtained_gpa = ? where id = ?");
 
-                String str3 = student_id_course.getText();
-                String credit3 = subject_credit3.getText();
-                String obtained_gpa3 = subject_obtained_gpa3.getText();
+            pst2.setString(1, credit2);
+            pst2.setString(2, obtained_gpa2);
+            pst2.setString(3, str2);
+            pst2.executeUpdate();
 
-                Class.forName("com.mysql.jdbc.Driver");
+            String str3 = student_id_course.getText();
+            String credit3 = subject_credit3.getText();
+            String obtained_gpa3 = subject_obtained_gpa3.getText();
 
-                Connection con3 = DriverManager.getConnection("jdbc:mysql://localhost/student_info_sys", "root", "");
-                PreparedStatement pst3 = con3.prepareStatement("UPDATE subject3 set credit = ? ,obtained_gpa = ? where id = ?");
+            Class.forName("com.mysql.jdbc.Driver");
 
-                pst3.setString(1, credit3);
-                pst3.setString(2, obtained_gpa3);
-                pst3.setString(3, str3);
-                pst3.executeUpdate();
+            Connection con3 = DriverManager.getConnection("jdbc:mysql://localhost/student_info_sys", "root", "");
+            PreparedStatement pst3 = con3.prepareStatement("UPDATE subject3 set credit = ? ,obtained_gpa = ? where id = ?");
 
-                String str4 = student_id_course.getText();
-                String credit4 = subject_credit4.getText();
-                String obtained_gpa4 = subject_obtained_gpa4.getText();
+            pst3.setString(1, credit3);
+            pst3.setString(2, obtained_gpa3);
+            pst3.setString(3, str3);
+            pst3.executeUpdate();
 
-                Class.forName("com.mysql.jdbc.Driver");
+            String str4 = student_id_course.getText();
+            String credit4 = subject_credit4.getText();
+            String obtained_gpa4 = subject_obtained_gpa4.getText();
 
-                Connection con4 = DriverManager.getConnection("jdbc:mysql://localhost/student_info_sys", "root", "");
-                PreparedStatement pst4 = con4.prepareStatement("UPDATE subject4 set credit = ? ,obtained_gpa = ? where id = ?");
+            Class.forName("com.mysql.jdbc.Driver");
 
-                pst4.setString(1, credit4);
-                pst4.setString(2, obtained_gpa4);
-                pst4.setString(3, str4);
-                pst4.executeUpdate();
+            Connection con4 = DriverManager.getConnection("jdbc:mysql://localhost/student_info_sys", "root", "");
+            PreparedStatement pst4 = con4.prepareStatement("UPDATE subject4 set credit = ? ,obtained_gpa = ? where id = ?");
 
-                String str5 = student_id_course.getText();
-                String credit5 = subject_credit5.getText();
-                String obtained_gpa5 = subject_obtained_gpa5.getText();
+            pst4.setString(1, credit4);
+            pst4.setString(2, obtained_gpa4);
+            pst4.setString(3, str4);
+            pst4.executeUpdate();
 
-                Class.forName("com.mysql.jdbc.Driver");
+            String str5 = student_id_course.getText();
+            String credit5 = subject_credit5.getText();
+            String obtained_gpa5 = subject_obtained_gpa5.getText();
 
-                Connection con5 = DriverManager.getConnection("jdbc:mysql://localhost/student_info_sys", "root", "");
-                PreparedStatement pst5 = con5.prepareStatement("UPDATE subject5 set credit = ? ,obtained_gpa = ? where id = ?");
+            Class.forName("com.mysql.jdbc.Driver");
 
-                pst5.setString(1, credit5);
-                pst5.setString(2, obtained_gpa5);
-                pst5.setString(3, str5);
-                pst5.executeUpdate();
+            Connection con5 = DriverManager.getConnection("jdbc:mysql://localhost/student_info_sys", "root", "");
+            PreparedStatement pst5 = con5.prepareStatement("UPDATE subject5 set credit = ? ,obtained_gpa = ? where id = ?");
 
-                JOptionPane.showMessageDialog(null, "Data Saved");
+            pst5.setString(1, credit5);
+            pst5.setString(2, obtained_gpa5);
+            pst5.setString(3, str5);
+            pst5.executeUpdate();
 
-                //JOptionPane.showMessageDialog(this, "Record added");
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(SignUpForm.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (Exception ex) {
-                Logger.getLogger(SignUpForm.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            JOptionPane.showMessageDialog(null, "Data Saved");
 
-        } else {
-            JOptionPane.showMessageDialog(null, "Access Denied!!");
+            //JOptionPane.showMessageDialog(this, "Record added");
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(SignUpForm.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(SignUpForm.class.getName()).log(Level.SEVERE, null, ex);
         }
+
+
     }//GEN-LAST:event_save_button_for_creditActionPerformed
 
     private void results_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_results_buttonActionPerformed
@@ -2795,7 +2811,7 @@ public class MainMenu extends javax.swing.JFrame {
             int abs_day = 0;
 
             if (!rs.isBeforeFirst()) {
-                System.out.println("No data");
+                //System.out.println("No data");
                 total_day = 0;
                 abs_day = 0;
             } else {
@@ -2936,7 +2952,7 @@ public class MainMenu extends javax.swing.JFrame {
 
                 if (pst.executeUpdate() != 0) {
                     JOptionPane.showMessageDialog(null, "Account created");
-          
+
                 } else {
                     JOptionPane.showMessageDialog(null, "Something wrong");
                 }
@@ -3023,7 +3039,7 @@ public class MainMenu extends javax.swing.JFrame {
             imagePth = path;//for attaching in data base
             //display the image in the jlabel using resizeImage
 
-            jLabelPic1.setIcon(resizePic(path));
+            jLabelPic1.setIcon(resizePic1(path));
             //jLabelPic.setIcon(new ImageIcon(path)) ;
         } //if the user cancel
         else if (fileState == JFileChooser.CANCEL_OPTION) {
@@ -3107,6 +3123,7 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JTextField id_admin;
     private javax.swing.JTextField id_student;
     private javax.swing.JTextField id_student1;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonBrowse;
     private javax.swing.JCheckBox jCheckBox3;
     private javax.swing.JCheckBox jCheckBox4;
