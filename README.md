@@ -1,6 +1,24 @@
 # Student-Management-System
 A programme using java swing
 
+## This Project is done in 2nd year 2nd semister
+## Course : CSE-2203  Database Management System
+
+
+
+### Setup
+In order to setup this program download this software.You should also have xammp app installed.
+
+Now,
+Unzip the rar file from the link and add those files in xammp folder .
+https://github.com/NaheedRayan/Readme-Images/tree/master/Student_Management_System_xampp_data
+Restart xampp start MySQL and open database and table to make sure its working.
+
+## This Programe is only handled by admin
+
+
+
+
 
 ![alt text](https://github.com/NaheedRayan/Readme-Images/blob/master/Student_Management_System/01.1.JPG?raw=true)
 ![alt text](https://github.com/NaheedRayan/Readme-Images/blob/master/Student_Management_System/01.2.JPG?raw=true)
