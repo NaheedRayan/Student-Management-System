@@ -59,3 +59,32 @@ This is the schema of the app .I would not say the app is perfect .There are roo
 ![alt text](https://github.com/NaheedRayan/Readme-Images/blob/master/Student_Management_System/16.JPG?raw=true)
 ![alt text](https://github.com/NaheedRayan/Readme-Images/blob/master/Student_Management_System/17.JPG?raw=true)
 ![alt text](https://github.com/NaheedRayan/Readme-Images/blob/master/Student_Management_System/18.JPG?raw=true)
+
+## What i learned .
+To be frank I learned a lot .
+The using of splitview is hard .Because it creates much clutter in code.
+So maintainence becomes very hard.I learned it the hard way.
+
+## some tips
+this code is for fetching and linking image from db
+
+```
+byte[] image = rs.getBytes("picture") ;
+                
+ImageIcon myImg = new ImageIcon(image) ;
+Image img = myImg.getImage().getScaledInstance(jLabelPic.getWidth(),jLabelPic.getHeight(),Image.SCALE_SMOOTH);
+ImageIcon myPicture = new ImageIcon(img) ;
+jLabelPic.setIcon(myPicture);
+```
+
+
+This piece of code is used for refreshing the table
+```
+DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();             
+tableModel.setRowCount(0);
+```
+
+
+
+
+------------------------------------------------------------------------The End ❤❤❤❤🖤---------------------------------------------------------------------------
