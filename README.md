@@ -84,6 +84,7 @@ DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
 tableModel.setRowCount(0);
 ```
 
+## Copy the Student_Management_System_xampp_data folder in the xampp directory and run the project
 
 
 
